@@ -1,0 +1,608 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from demo.templatetrend.com/prestashop/PRS703_4/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Feb 2022 13:10:26 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+{% include "store/inc/head.html" %}
+
+<body id="index" class="lang-en country-in currency-inr layout-full-width page-index tax-display-enabled">
+  <div class="preloading"></div>
+
+
+
+
+  <main>
+
+
+    {% include "store/inc/header.html" %}
+
+
+
+
+    <div class="display-topcolumn">
+      <div class="homeslider-container slideshow_container">
+        <div class="trend-slideshow">
+          <div class="flexslider ma-nivoslider">
+            <!-- <div class="sliderloading"><img src="loading.png" alt="" /></div>  -->
+            <div id="trend-slideshow-home" class="slides">
+
+              <a href="{% url 'detail' slider1.pk slider1.category.name %}" title="Sample 1"><img style="display:none"
+                  src="{% static 'modules/ttslideshows/views/images/sample-1.jpg' %}"
+                  data-thumb="{% static 'modules/ttslideshows/views/images/sample-1.jpg' %}" alt=""
+                  title="#htmlcaption1" /> </a>
+              <a href="{% url 'detail' slider2.pk slider2.category.name %}" title="Sample 2"><img style="display:none"
+                  src="{% static 'modules/ttslideshows/views/images/sample-2.jpg' %}"
+                  data-thumb="{% static 'modules/ttslideshows/views/images/sample-2.jpg' %}" alt=""
+                  title="#htmlcaption2" /> </a>
+              <a href="{% url 'detail' slider3.pk slider3.category.name %}" title="Sample 3"><img style="display:none"
+                  src="{% static 'modules/ttslideshows/views/images/sample-3.jpg' %}"
+                  data-thumb="{% static 'modules/ttslideshows/views/images/sample-3.jpg' %}" alt=""
+                  title="#htmlcaption3" /> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="shipping-outer">
+        <div class="container">
+          <div class="shipping-inner">
+            <div class="subtitle-part subtitle-part1">
+              <div class="subbanner-part-maininnner1">
+                <div class="subicon subicon1"><span class="hide">icon</span></div>
+                <div class="shipping-desc">
+                  <div class="subtitile subtitile1">Free shipping</div>
+                  <div class="subtitile subtitile2">sed diam nonummy tincidunt ut laoreet dolore magna aliquam erat
+                    volutpat.</div>
+                </div>
+              </div>
+            </div>
+            <div class="subtitle-part subtitle-part2">
+              <div class="subbanner-part-maininnner2">
+                <div class="subicon subicon2"><span class="hide">icon</span></div>
+                <div class="shipping-desc">
+                  <div class="subtitile subtitile1">Support online</div>
+                  <div class="subtitile subtitile2">sed diam nonummy tincidunt ut laoreet dolore magna aliquam erat
+                    volutpat. </div>
+                </div>
+              </div>
+            </div>
+            <div class="subtitle-part subtitle-part3">
+              <div class="subbanner-part-maininnner3">
+                <div class="subicon subicon3"><span class="hide">icon</span></div>
+                <div class="shipping-desc">
+                  <div class="subtitile subtitile1">Any place</div>
+                  <div class="subtitile subtitile2">sed diam nonummy tincidunt ut laoreet dolore magna aliquam erat
+                    volutpat. </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="about-wrapper">
+        <div class="container">
+          <div class="about-normal">
+            <div class="about-bottom">
+              <img src="{% static 'img/cms/about.png' %}" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <section id="special-products">
+        <div class="special-products container">
+
+          <div class="titles">
+            <div class="title_inner">
+              <h1 class="main-title">Discount Product</h1>
+            </div>
+          </div>
+
+          <div class="homepage-products products">
+            <ul id="specialproducts-carousel" class="owl-carousel product-item products-slider">
+              {% for items in discount %}
+              <li class="item">
+
+                <article class="product-miniature js-product-miniature" data-id-product="2"
+                  data-id-product-attribute="9" itemprop="item" itemscope>
+                  <div itemprop="itemListElement" itemscope>
+
+                    <div class="thumbnail-container">
+                      <div class="thumbnail-inner">
+
+                        <div class="thumbnail-image-inner">
+
+                          <a href="{% url 'detail' items.product.pk items.product.category.name %}" class="thumbnail product-thumbnail">
+                            <img style="width: 400px; height: 300px;" src="{{items.product.product_image1.url}}"
+                              alt="{{items.product.name}}" data-full-size-image-url="{{items.product.product_image1.url}}" />
+
+                            <img style="width: 400px; height: 300px;"
+                              class="fade replace-2x img-responsive ot_img_hover" src="{{items.product.product_image2.url}}"
+                              alt="{{items.product.name}}" itemprop="image" title="{{items.product.name}}" />
+
+                          </a>
+
+
+                          <ul class="product-flags">
+
+                            {% if items.product.trending %}
+                            <li class="product-flag new">Trending </li>
+                            {% endif %}
+                          </ul>
+
+                          <div class="hover-addtocart product_data">
+
+
+
+
+                            <div class="product-add-to-cart addtocart-button">
+                              {% csrf_token %}
+                              <input type="hidden" value=" {{items.product.pk}}" class="prod_id">
+                              <input type="hidden" min="1" class="qty-input" max="1" value="1" type="number">
+
+                              <button class="btn btn-primary addtocartbtn">Add to cart</button>
+
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+
+
+
+                        <div class="product-description">
+
+                          <h2 class="h3 product-title" itemprop="name"><a
+                              href="{% url 'detail' items.product.pk items.product.category.name %}" itemprop="url"> {{items.product.name}}
+                            </a></h2>
+
+
+
+
+
+
+
+
+
+                          <div class="product-price-and-shipping">
+
+                            <span class="sr-only">Price</span>
+                            <span itemprop="price" class="price">ETB {{items.product.selling_price}}</span>
+                            <span class="regular-price">ETB {{items.product.original_price}}</span>
+
+
+
+
+
+                          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+              </li>
+              {% endfor %}
+
+
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <div class="about-wrapper">
+        <div class="container">
+          <div class="about-normal">
+            <div class="about-bottom">
+              <img src="{% static 'img/cms/about.png' %}" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <section id="featured-products">
+        <div class="featured-products container">
+
+          <div class="titles">
+            <div class="title_inner">
+              <h1 class="main-title">Trending Products</h1>
+            </div>
+          </div>
+
+          <div class="homepage-products products">
+            <ul id="featuredproducts-carousel" class="owl-carousel product-item grid products-slider">
+
+              {% for items in trending_item %}
+              <li class="item">
+
+                <article class="product-miniature js-product-miniature" data-id-product="2"
+                  data-id-product-attribute="9" itemprop="item" itemscope>
+                  <div itemprop="itemListElement" itemscope>
+
+                    <div class="thumbnail-container">
+                      <div class="thumbnail-inner">
+
+                        <div class="thumbnail-image-inner">
+
+                          <a href="{% url 'detail' items.pk items.category.name %}" class="thumbnail product-thumbnail">
+                            <img style="width: 400px; height: 300px;" src="{{items.product_image1.url}}"
+                              alt="{{items.name}}" data-full-size-image-url="{{items.product_image1.url}}" />
+
+                            <img style="width: 400px; height: 300px;"
+                              class="fade replace-2x img-responsive ot_img_hover" src="{{items.product_image2.url}}"
+                              alt="{{items.name}}" itemprop="image" title="{{items.name}}" />
+
+                          </a>
+
+
+                          <ul class="product-flags">
+
+                            {% if items.trending %}
+                            <li class="product-flag new">Trending </li>
+                            {% endif %}
+                          </ul>
+
+                          <div class="hover-addtocart product_data">
+
+
+
+
+                            <div class="product-add-to-cart addtocart-button">
+                              {% csrf_token %}
+                              <input type="hidden" value=" {{items.pk}}" class="prod_id">
+                              <input type="hidden" min="1" class="qty-input" max="1" value="1" type="number">
+
+                              <button class="btn btn-primary addtocartbtn">Add to cart</button>
+
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+
+
+
+                        <div class="product-description">
+
+                          <h2 class="h3 product-title" itemprop="name"><a
+                              href="{% url 'detail' items.pk items.category.name %}" itemprop="url"> {{items.name}}
+                            </a></h2>
+
+
+
+
+
+
+
+
+
+                          <div class="product-price-and-shipping">
+
+                            <span class="sr-only">Price</span>
+                            <span itemprop="price" class="price">ETB {{items.selling_price}}</span>
+                            
+
+
+
+
+
+                          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <div class="custom-parallaxblock">
+        <div class="parallaxblock-inner container">
+          <div class="parallax-block">
+            <div class="parallax-left">
+              <img src="{% static 'img/cms/parallax.jpg' %}" alt="" />
+            </div>
+            <div class="parallax-right">
+              <div class="parallax-heading">
+                <h2>About of Africa Jewellery</h2>
+                <p> {{about.about}} </p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="testimonial-inner">
+        <div class="container">
+          <div class="testimonial_outer">
+            <div class="testimonial-outer">
+
+              <div id="testimonial-slider" class="owl-carousel testimonial-carousel">
+                {% for designer in designers %}
+                   <div class="item">
+                  <div class="testminial-data">
+                    <div class="test_desc">
+
+                      <div class="testimonial-left">
+                        <div class="test_imag">
+                          <div class="test_img_innar">
+                            <img class="img-testimonial"
+                              src="{{designer.image1.url}} "
+                              alt="web designer" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="testimonial-right">
+
+                        <div class="testimonial-desc">
+                          <p> {{designer.about}} </p>
+                        </div>
+                        <div class="testmonial-author">
+                          <div class="testmonial-author1">Full name -</div>
+                          <div class="testmonial-author2">{{designer.fname}} {{designer.lname}} </div>
+                        </div>
+
+                        <div class="testmonial-author">
+                          <div class="testmonial-author1">Designing -</div>
+                          <div class="testmonial-author2">{{designer.designing}}</div>
+                        </div>
+                        <div class="testmonial-author">
+                          <div class="testmonial-author1">Email -</div>
+                          <div class="testmonial-author2">{{designer.email}}</div>
+                        </div>
+                        <div class="testmonial-author">
+                          <div class="testmonial-author1">Phome -</div>
+                          <div class="testmonial-author2">{{designer.phone}}</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+               
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+    <div class="display-hometop">
+
+      <div class="home_blog_post_area general displayHomeTop">
+        <div class="container">
+          <div class="home_blog_post">
+            <div class="page_title_area">
+              <p class="page_subtitle"></p>
+              <h1 class="main-title">
+                <a href="{% url 'blog' 'discount' %}">
+                  Latest blog
+                </a>
+                <span class="heading_carousel_arrow"></span>
+              </h1>
+
+              <div class="heading-line d_none"><span></span></div>
+            </div>
+            <div class="home_blog_post_inner carousel">
+              {% for blog in Disblog %}
+              <article class="blog_post col-xs-12 col-sm-4">
+                <div class="blog_post_content">
+                  <div class="blog_post_content_top">
+                    <div class="post_thumbnail">
+                      <a href="{% url 'blogdiscdetail' blog.pk %}">
+                        <img class="xipblog_img img-responsive" src="{{blog.product.product_image1.url}}"
+                          alt="{{blog.product.name}}" />
+                      </a>
+
+
+                    </div>
+                  </div>
+                  <div class="blog_post_content_bottom">
+                    <div class="meta_date">
+                      <p class="date">{{blog.created_at|date:"M d, Y"}}</p>
+
+                    </div>
+                    <h3 class="post_title"><a href="{% url 'blogdiscdetail' blog.pk %}">
+
+                        {{blog.title}} on ({{blog.product.name}})</a></h3>
+                    <div class="post_meta clearfix">
+                      <p class="meta_author">
+                        Posted by
+                        <span>Admin</span>
+                      </p>
+
+
+                    </div>
+
+                    <div class="post_content">
+                      <p style="
+                                                            
+                                                            overflow: hidden;
+                                                            white-space: nowrap;
+                                                            text-overflow: ellipsis;
+                                                            ">
+                        {{blog.description}}
+                      </p>
+                    </div>
+                    <div class="content_more">
+                      <a class="read_more"
+                        href="{% url 'blogdiscdetail' blog.pk %}">Read
+                        more</a>
+                    </div>
+                  </div>
+
+                </div>
+              </article>
+              {% endfor %}
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+     
+
+    </div>
+
+
+    <div class="breadcumb_outer">
+      <div class="breadcumb_inner">
+        <div class="container">
+
+          <nav data-depth="1" class="breadcrumb hidden-sm-down">
+            <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+
+
+              <li>
+                <span>Home</span>
+              </li>
+
+
+            </ol>
+          </nav>
+
+        </div>
+      </div>
+    </div>
+    <section id="wrapper">
+      <div class="container">
+
+        <div class="row">
+          <div class="wrapper-inner">
+
+
+            <div id="content-wrapper">
+
+
+
+              <section id="main">
+
+
+
+
+
+
+                
+
+
+
+                <footer class="page-footer">
+
+                  <!-- Footer content -->
+
+                </footer>
+
+
+              </section>
+
+
+
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  
+
+    {% include "store/inc/footer.html" %}
+
+  </main>
+
+  {% include "store/inc/scripts.html" %}
+
+
+
+
+
+
+</body>
+
+
+<!-- Mirrored from demo.templatetrend.com/prestashop/PRS703_4/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Feb 2022 13:12:10 GMT -->
+
+</html>

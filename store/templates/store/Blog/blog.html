@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "store/inc/head.html" %}
+
+<body id="module-xipblog-archive" class="lang-en country-in currency-inr layout-full-width page- tax-display-enabled"
+    data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="">
+    <div class="preloading"></div>
+
+
+
+
+    <main>
+
+
+        {% include "store/inc/header.html" %}
+
+
+       
+
+
+
+
+        <div class="breadcumb_outer">
+            <div class="breadcumb_inner">
+                <div class="container">
+
+                    <nav data-depth="3" class="breadcrumb hidden-sm-down">
+                        <ol itemscope="" >
+
+
+                            <li itemprop="itemListElement" itemscope="" >
+                                <a itemprop="item"
+                                    href="{% url 'home' %}"><span
+                                        itemprop="name">Home</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+
+
+                            <li itemprop="itemListElement" itemscope="" >
+                                <a itemprop="item"
+                                    href=" {% url 'blog' type %} "><span
+                                        itemprop="name">Blog {{type}} </span></a>
+                                <meta itemprop="position" content="2">
+                            </li>
+
+
+                            <li>
+                                <span></span>
+                            </li>
+
+
+                        </ol>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+        <section id="wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="wrapper-inner">
+
+
+
+                        <div id="content-wrapper">
+
+
+
+                            <section id="main">
+
+
+
+
+                                <section id="content" class="page-content">
+                                    <div class="kr_blog_post_area">
+                                        <div class="kr_blog_post_inner blog_style_default column_2">
+                                            
+                                            {% if type == 'discount' %}
+                                            {% for blog in discountEvent %}
+                                              <article id="blog_post" class="blog_post blog_post_standrad clearfix">
+                                                <div class="blog_post_content">
+                                                    <div class="blog_post_content_top">
+
+                                                        <div class="post_thumbnail">
+
+                                                            <a href="{% url 'blogdiscdetail' blog.pk %}">
+                                                                <img style="height: 400px; width: 500px;" class="img-responsive"
+                                                                    src="{{blog.product.product_image1.url}} "
+                                                                    alt="{{blog.product.name}} ">
+                                                            </a>
+                                                            <div class="blog_mask">
+                                                                <div class="blog_mask_content">
+                                                                    <a class="thumbnail_lightbox"
+                                                                        href="{{blog.product.product_image1.url}}">
+                                                                        <i class="icon_plus"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="blog_post_content_bottom">
+
+                                                        <h1 class="post_title"><a
+                                                                href="{% url 'blogdiscdetail' blog.pk %}">
+                                                                {{blog.title}} on ({{blog.product.name}})
+                                                            </a></h1>
+                                                            
+                                                        <div class="post_meta clearfix">
+
+                                                            <div class="meta_author">
+                                                                <span>By Admin</span>
+                                                            </div>
+
+                                                            <div class="post_meta_date">
+                                                                {{blog.created_at|date:"M d, Y"}}
+                                                            </div>
+
+                                                            <div class="meta_category">
+                                                                <span> Expired on {{blog.ending_date |date:"M d, Y"}} </span>
+                                                                
+                                                            </div>
+                                                            
+                                                        </div>
+                                                       
+                                                        <div class="product-price-and-shipping">
+
+                                                            <span class="sr-only">Price</span>
+                                                            <span itemprop="price" class="price">ETB {{blog.product.selling_price}}</span>
+                                                            
+
+
+
+
+
+                                                        </div>
+                                                        <br>
+
+                                                        <div class="post_content">
+                                                            <p style="line-height: 1.5em;
+                                                            
+                                                            overflow: hidden;
+                                                            white-space: nowrap;
+                                                            text-overflow: ellipsis;
+                                                            " >
+                                                                {{blog.description}}
+                                                            </p>
+                                                           
+                                                        </div>
+                                                        <div class="content_more">
+                                                            <a class="read_more"
+                                                                href="{% url 'blogdiscdetail' blog.pk %}">Continue</a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </article>
+                                            
+                                            {% endfor %}
+                                            
+                                            {% else %}
+                                            {% for blog in blogs %}
+                                            <article id="blog_post" class="blog_post blog_post_standrad clearfix">
+                                                <div class="blog_post_content">
+                                                    <div class="blog_post_content_top">
+
+                                                        <div class="post_thumbnail">
+
+                                                            <a href="{% url 'blogdetail' blog.pk %}">
+                                                                <img style="height: 300px; width: 500px;" class="img-responsive"
+                                                                    src="{{blog.image1.url}} "
+                                                                    alt="{{blog.product.name}} ">
+                                                            </a>
+                                                            <div class="blog_mask">
+                                                                <div class="blog_mask_content">
+                                                                    <a class="thumbnail_lightbox"
+                                                                        href="{{blog.image1.url}}">
+                                                                        <i class="icon_plus"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="blog_post_content_bottom">
+
+                                                        <h3 class="post_title"><a
+                                                                href="{% url 'blogdiscdetail' blog.pk %}">
+                                                                {{blog.title}} 
+                                                                {% if blog.product %}
+                                                                    on ({{blog.product.name}})
+                                                                {% endif %}
+                                                                    
+                                                            </a></h3>
+                                                        <div class="post_meta clearfix">
+
+                                                            <div class="meta_author">
+                                                                <span>By Admin</span>
+                                                            </div>
+
+                                                            <div class="post_meta_date">
+                                                                {{blog.created_at|date:"M d, Y"}}
+                                                            </div>
+
+                                                            
+                                                            
+                                                        </div>
+                                                        <br>
+                                                        <div class="post_meta clearfix">
+
+                                                            <div class="meta_author">
+                                                                <span>link</span>
+                                                            </div>
+
+                                                            <div class="post_meta_date">
+                                                                {{blog.link}}
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <br>
+                                                        <div class="post_meta clearfix">
+
+                                                            <div class="meta_author">
+                                                                <span>Downloadable document</span>
+                                                            </div>
+
+                                                            <div class="post_meta_date">
+                                                                no doc{{blog.docs}}
+                                                            </div>
+                                                            
+                                                        </div>
+
+                                                        <div class="post_content">
+                                                            <p style="line-height: 1.5em;
+                                                            
+                                                            overflow: hidden;
+                                                            white-space: nowrap;
+                                                            text-overflow: ellipsis;
+                                                            " >
+                                                                {{blog.description}}
+                                                            </p>
+                                                           
+                                                        </div>
+                                                        <div class="content_more">
+                                                            <a class="read_more"
+                                                                href="{% url 'blogdiscdetail' blog.pk %}">Continue</a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </article>
+                                            
+                                            {% endfor %}
+                                            {% endif %}
+                                                
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </section>
+
+
+
+                                <footer class="page-footer">
+
+                                    <!-- Footer content -->
+
+                                </footer>
+
+
+                            </section>
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {% include "store/inc/footer.html" %}
+
+    </main>
+    {% include "store/inc/scripts.html" %}
+
+
+
+
+
+
+
+
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0"
+        style="display: none;"></ul>
+    <gdiv class="ginger-extension-writer" style="display: none;">
+        <gdiv class="ginger-extension-writer-frame"><iframe
+                src="chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/writer/index.html"></iframe></gdiv>
+    </gdiv>
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>

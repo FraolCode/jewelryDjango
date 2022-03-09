@@ -1,0 +1,603 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "store/inc/head.html" %}
+
+<body id="category"
+    class="lang-en country-in currency-inr layout-left-column page-category tax-display-enabled category-id-6 category-shop category-id-parent-2 category-depth-level-2"
+    data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="">
+    <div class="preloading"></div>
+
+
+
+
+    <main>
+
+
+        {% include "store/inc/header.html" %}
+
+
+
+
+
+
+
+        <div class="breadcumb_outer">
+            <div class="breadcumb_inner">
+                <div class="container">
+
+                    <nav data-depth="2" class="breadcrumb hidden-sm-down">
+                        <ol itemscope="">
+
+
+                            <li itemprop="itemListElement" itemscope="">
+                                <a itemprop="item" href="{% url 'home' %}"><span itemprop="name">Home</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+
+
+                            <li>
+                                <span>Shop</span>
+                            </li>
+
+
+                        </ol>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <section id="wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="wrapper-inner">
+                        <div id="left-column" class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+
+
+                            <div class="block-categories hidden-sm-down">
+                                <ul class="category-top-menu">
+                                    <li><a class="text-uppercase h6" href="{% url 'shop' %}">Shop</a>
+                                    </li>
+                                    <li>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="search_filters_wrapper" class="hidden-sm-down">
+                               
+                                <div id="search_filters">
+
+                                    <p class="text-uppercase h6 hidden-sm-down">Filter By</p>
+
+
+
+
+
+
+
+                                    <section class="facet clearfix">
+                                        <p class="h6 facet-title hidden-sm-down">Category</p>
+
+
+
+
+                                        <ul id="facet_83" class="collapse">
+                                            {% for categorys in category %}
+                                            <li>
+                                                <label class="facet-label" for="facet_input_83_0">
+
+
+                                                    <a href="{% url 'searchbycategory' categorys.pk %}"
+                                                        class="_gray-darker search-link " rel="nofollow">
+                                                        {{categorys.name}}
+                                                        <!-- <span class="magnitude">(3)</span> -->
+                                                    </a>
+                                                </label>
+                                            </li>
+                                            {% endfor %}
+
+
+
+                                        </ul>
+
+
+                                    </section>
+
+                                    <section class="facet clearfix">
+                                        <p class="h6 facet-title hidden-sm-down">Availability</p>
+
+
+
+
+                                        <ul id="facet_82257" class="collapse">
+
+                                            <li>
+                                                <label class="facet-label" for="facet_input_82257_0">
+
+
+                                                    <a href="{% url 'searchbystock' 'in' %}"
+                                                        class="_gray-darker search-link " rel="nofollow">
+                                                        In stock
+                                                        <span class="magnitude">({{instock}})</span>
+                                                    </a>
+                                                </label>
+                                            </li>
+
+                                            <li>
+                                                <label class="facet-label" for="facet_input_82257_1">
+
+
+                                                    <a href="{% url 'searchbystock' 'out' %}"
+                                                        class="_gray-darker search-link " rel="nofollow">
+                                                        Not available
+                                                        <span class="magnitude">({{outstock}})</span>
+                                                    </a>
+                                                </label>
+                                            </li>
+                                        </ul>
+
+
+                                    </section>
+
+                                  
+
+
+
+                                              
+
+                                </div>
+
+                            </div>
+                            <div id="custom-leftbannerblock" class="custom-leftbannerblock">
+
+                                <p class="left-banner">
+                                    <a href="#" title="Left Banner Image 1">
+                                        <img src="{% static 'assets/img/banner/bn.jpg' %}"
+                                            alt="Left Banner Image 1" width="auto" height="auto">
+                                    </a>
+                                </p>
+
+                            </div>
+
+                            <section id="leftsidebar" class="leftsidebar">
+                                <h1 class="title">New products</h1>
+                                <div class="sidebar-products products clearfix">
+                                    <ul id="newproducts-grid" class="products-grid product-item">
+                                        {% for items in item %}
+                                        <li class="item">
+
+                                            <article class="product-miniature js-product-miniature" data-id-product="13"
+                                                data-id-product-attribute="60" itemprop="item" itemscope="">
+                                                <div class="product_data" itemprop="itemListElement" itemscope="">
+
+                                                    <div itemprop="itemListElement" itemscope="">
+
+
+                                                        <div itemprop="itemListElement" itemscope="">
+                                                            <div class="thumbnail-container reviews-loading">
+                                                                <div class="thumbnail-inner">
+
+                                                                    <div class="thumbnail-image-inner">
+
+                                                                        <a href="{% url 'detail' items.pk items.category.name %}"
+                                                                            class="thumbnail product-thumbnail">
+                                                                            <img src="{{items.product_image1.url}}"
+                                                                                alt="Brown bear - Vector graphics"
+                                                                                data-full-size-image-url="{{items.product_image1.url}}">
+
+                                                                            <img class="fade replace-2x img-responsive ot_img_hover"
+                                                                                src="{{items.product_image2.url}}"
+                                                                                alt="Brown bear - Vector graphics"
+                                                                                itemprop="image"
+                                                                                title="Brown bear - Vector graphics">
+
+                                                                        </a>
+
+
+                                                                    </div>
+
+
+                                                                    <div class="thumbnail-sidebar-inner">
+                                                                        <div class="product-description">
+
+
+                                                                            <h2 class="h3 product-title"
+                                                                                itemprop="name"><a
+                                                                                    href="{% url 'detail' items.pk items.category.name %}"
+                                                                                    itemprop="url">
+                                                                                    {{items.name}}
+                                                                                </a></h2>
+
+
+
+                                                                            <div class="product-price-and-shipping">
+
+                                                                                <span class="sr-only">Price</span>
+                                                                                <span itemprop="price" class="price">ETB
+                                                                                    {{items.selling_price}}</span>
+
+
+
+
+
+
+                                                                                <div class="addtocart-button ">
+
+                                                                                    {% csrf_token %}
+                                                    <input type="hidden" value=" {{items.pk}}" class="prod_id" >
+                                                    <input type="hidden" min="1" class="qty-input"  max="1" value="1" type="number">
+                                                       
+                                                        <button class="btn btn-primary addtocartbtn">Add to cart</button>
+
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+
+                                        </li>
+                                        {% endfor %}
+
+
+                                    </ul>
+                                </div>
+                                <div class="clearfix">
+                                    <a href="{% url 'shop' %}"
+                                        class="btn btn-primary allproducts">All Newproducts</a>
+                                </div>
+                            </section>
+
+
+                        </div>
+
+
+
+
+                        <div id="content-wrapper" class="left-column col-xs-12 col-sm-8 col-md-9">
+
+
+                            <section id="main">
+
+
+                                <div id="js-product-list-header">
+                                    <div class="block-category card card-block">
+                                        <h1 class="h1">Shop</h1>
+                                        <div class="block-category-inner">
+
+                                            <div class="category-cover">
+                                                <img src="https://demo.templatetrend.com/prestashop/PRS703_4/img/c/6-category_default.jpg"
+                                                    alt="Shop">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <section id="products">
+
+                                    <div>
+
+                                        <div id="js-product-list-top" class="row products-selection">
+                                            <div class="col-md-6 hidden-sm-down total-products">
+                                                <ul class="display hidden-xs grid_list">
+                                                    <li id="grid" class="selected"><a href="#" title="Grid">Grid</a>
+                                                    </li>
+                                                    <li id="list"><a href="#" title="List">List</a></li>
+                                                </ul>
+                                                <p>There are {{count}} products.</p>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div id="" class="hidden-sm-down">
+                                        <section id="js-active-search-filters" class="hide">
+
+                                            <p class="h6 hidden-xs-up">Active filters</p>
+
+
+                                        </section>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <div id="js-product-list">
+                                            <div class="products grid row" itemscope=""
+                                                itemtype="http://schema.org/ItemList">
+
+                                                
+                                                {% if queryset %}
+                                                {% for Items in queryset %}
+
+                                                
+                                                <article
+                                                    class="product-miniature js-product-miniature col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4"
+                                                    data-id-product="7" data-id-product-attribute="52" itemprop="item"
+                                                    itemscope="">
+                                                    <div
+                                                        class="thumbnail-container has-reviews reviews-loaded ">
+                                                        <div class="thumbnail-inner">
+
+
+                                                            <div class="thumbnail-image-inner">
+
+                                                                <a href="{% url 'detail' Items.pk Items.category.name %}"
+                                                                    class="thumbnail product-thumbnail">
+                                                                    <img style="width: 300px; height: 300px;"  src="{{Items.product_image1.url}}"
+                                                                        alt="{{Items.name}}"
+                                                                        data-full-size-image-url="{{Items.product_image1.url}}">
+
+                                                                    <img style="width: 300px; height: 300px;" class="fade replace-2x img-responsive ot_img_hover"
+                                                                        src="{{Items.product_image2.url}}"
+                                                                        alt="{{Items.name}} " itemprop="image"
+                                                                        title="{{Items.name}}">
+
+                                                                </a>
+
+
+                                                                <ul class="product-flags">
+
+                                                                    {% if Items.trending %}
+                                                                    <li class="product-flag new">Trending </li>
+                                                                    {% endif %}
+
+
+                                                                </ul>
+
+                                                                <div class="hover-addtocart product_data">
+
+
+
+
+                                                                    <div class="product-add-to-cart addtocart-button">
+                                                                        {% csrf_token %}
+                                                    <input type="hidden" value=" {{Items.pk}}" class="prod_id" >
+                                                    <input type="hidden" min="1" class="qty-input"  max="1" value="1" type="number">
+                                                       
+                                                        <button class="btn btn-primary addtocartbtn">Add to cart</button>
+                                                                     
+                                                                       
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="product-description">
+
+                                                                <h2 class="h3 product-title" itemprop="name"><a
+                                                                        href="{% url 'detail' Items.pk Items.category.name %}"
+                                                                        itemprop="url"
+                                                                        > {{Items.name}}
+                                                                         </a></h2>
+
+
+
+
+
+
+
+
+
+                                                                <div class="product-price-and-shipping">
+
+                                                                    <span class="sr-only">Price</span>
+                                                                    <span itemprop="price" class="price">ETB {{Items.selling_price}}</span>
+                                                                    
+
+
+
+
+
+                                                                </div>
+
+
+
+                                                                
+
+
+
+                                                                
+
+                                                                <div itemprop="aggregateRating"
+                                                                   
+                                                                    itemscope="">
+                                                                    <meta itemprop="reviewCount" content="1">
+                                                                    <meta itemprop="ratingValue" content="3">
+                                                                </div>
+
+
+
+                                                                <div class="product-desc">
+                                                                    <p  >{{Items.description}}</p>
+                                                                </div>
+
+                                                                <div class="price-cart">
+
+
+
+                                                                </div>
+
+
+                                                            </div>
+
+
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </article>
+                                                
+
+
+                                                {% endfor %}
+                                                {% else %}
+                                                <h1>There is no Product</h1>
+                                                <br><br>
+                                                {% endif %}
+                                                    
+
+                                                
+
+
+                                            </div>
+
+                                            <nav class="pagination">
+                                                <div class="col-md-4">
+
+                                                    Showing 1 of {{count}} item(s)
+
+                                                </div>
+
+                                                <div class="col-md-6">
+
+                                                    <ul class="page-list clearfix text-xs-center">
+                                                 
+                                                        {% if queryset.has_previous %}
+                                                        <li><a href="?page={{ queryset.previous_page_number }}"><</a></li>
+                                                        
+                                                        {% else %}
+                                                        
+                                                        <li class="current">
+                                                            <a rel="nofollow"
+                                                                href="#"
+                                                                class="disabled js-search-link">
+                                                                <
+                                                            </a>
+                                                        </li>
+                                                        {% endif %}
+
+                                                        
+                                
+                                                        {% if queryset.number|add:'-4' > 1 %}
+                                                        
+                                                        <li>
+                                                            <a rel="nofollow"
+                                                                href="?page={{ queryset.number|add:'-5' }}"
+                                                                class="js-search-link">
+                                                                &hellip;
+                                                            </a>
+                                                        </li>
+                                                        {% endif %}
+
+                                                        
+                                
+                                                        {% for i in queryset.paginator.page_range %}
+                                                        {% if queryset.number == i %}
+                                                       
+                                                        <li class="current">
+                                                            <a rel="nofollow"
+                                                                href="#"
+                                                                class="disabled js-search-link">
+                                                                {{ i }}
+                                                            </a>
+                                                        </li>
+                                                        {% elif i > queryset.number|add:'-5' and i < queryset.number|add:'5' %} 
+                                                        <li><a
+                                                            href="?page={{ i }}">{{ i }}</a></li>
+                                                        
+                                                            {% endif %}
+                                                            {% endfor %}
+                                
+                                                            {% if queryset.paginator.num_pages > queryset.number|add:'4' %}
+                                                            <li><a href="?page={{ queryset.number|add:'5' }}">&hellip;</a></li>
+                                                            
+                                                            {% endif %}
+                                
+                                                            {% if queryset.has_next %}
+                                                            
+                                                            <li><a href="?page={{ queryset.next_page_number }}">></a></li>
+                                                            {% else %}
+                                                            <li class="current">
+                                                                <a rel="nofollow"
+                                                                    href="#"
+                                                                    class="disabled js-search-link">
+                                                                    >
+                                                                </a>
+                                                            </li>
+                                                            
+                                                            {% endif %}
+                                                        
+
+
+                                                        
+
+                                                        
+                                                    </ul>
+
+                                                </div>
+
+                                            </nav>
+
+
+                                            <div class="hidden-md-up text-xs-right up">
+                                                <a href="#header" class="btn btn-secondary">
+                                                    Back to top
+                                                    <i class="material-icons"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                   
+
+                                </section>
+
+
+
+                            </section>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {% include "store/inc/footer.html" %}
+
+    </main>
+
+
+    {% include "store/inc/scripts.html" %}
+
+
+
+
+
+
+
+
+    
+    
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>

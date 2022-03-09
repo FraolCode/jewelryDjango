@@ -1,0 +1,245 @@
+{% load static %}
+<script type="text/javascript" src="{% static 'themes/core.js' %}"></script>
+ <script type="text/javascript"
+    src="{% static 'themes/PRS703_4/assets/js/theme.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'modules/ps_emailsubscription/views/js/ps_emailsubscription.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'modules/blockreassurance/views/dist/front.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'modules/ttslideshows/views/js/nivo-slider/jquery.nivo.slider.pack.js' %}"></script>
+ <!-- --><script type="text/javascript"
+    src="{% static 'modules/ttslideshows/views/js/ttslideshow.js' %}"></script>
+     
+<script type="text/javascript"
+    src="{% static 'modules/ttcookie/views/js/ttcookie.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'modules/productcomments/views/js/jquery.rating.plugin.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'modules/productcomments/views/js/productListingComments.js' %}"></script>
+ <script type="text/javascript"
+    src="{% static 'modules/otpopupnewsletter/views/js/jquery.cookie.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'modules/otpopupnewsletter/views/js/newsletter-popup.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'js/jquery/ui/jquery-ui.min.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'themes/PRS703_4/modules/ps_shoppingcart/ps_shoppingcart.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'modules/xipblog/js/xipblog.js' %}"></script>
+ <script type="text/javascript"
+    src="{% static 'modules/xipblog/js/validator.min.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'themes/PRS703_4/assets/js/owl.carousel.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'themes/PRS703_4/assets/js/ParallaxBackground.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'themes/PRS703_4/assets/js/jquery.total-storage.min.js' %}"></script>
+    
+   <script type="text/javascript"
+    src="{% static 'themes/PRS703_4/assets/js/jquery.ui.totop.js' %}"></script><a
+    href="#" id="toTop" style="display: none;"><span id="toTopHover"></span>To Top</a>
+  <script type="text/javascript"
+    src="{% static 'themes/PRS703_4/assets/js/custom.js' %}"></script>
+    <!-- 
+
+     -->
+
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+<script>
+     
+     var availableTags = [];
+    $.ajax({
+        method: "GET",
+        url: "/searchproduct",
+        success: function(response){
+            
+            startAutocomplete(response)
+        }
+    })
+    function startAutocomplete(availableTags){
+        $( "#searchform" ).autocomplete({
+      source: availableTags
+    });
+    }
+</script>
+
+
+
+
+
+
+
+<!-- alertify -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<script>
+  alertify.set('notifier','position', 'top-right');
+  {% for msg in messages %}
+      alertify.success(' {{msg}} ')
+  {% endfor %}
+  
+
+  $(document).ready(function (){
+
+$('.addtocartbtn').click(function (e){
+  e.preventDefault();
+
+  var product_id = $(this).closest('.product_data').find('.prod_id').val();
+  var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+  var token = $('input[name=csrfmiddlewaretoken]').val();
+  
+
+  $.ajax({
+      method: "POST",
+      url: "/add-to-cart",
+      data: {
+          'product_id': product_id,
+          'product_qty':product_qty,
+          csrfmiddlewaretoken: token,
+      },
+      success: function(response){
+          alertify.success(response.status)
+      }
+  })
+} );
+} );
+
+$('.changeQuantity').click(function (e){
+  e.preventDefault();
+  
+
+  var product_id = $(this).closest('.product_data').find('.prod_id').val();
+  var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+  var token = $('input[name=csrfmiddlewaretoken]').val();
+
+  
+  
+
+  $.ajax({
+      method: "POST",
+      url: "/update-cart",
+      data: {
+          'product_id': product_id,
+          'product_qty':product_qty,
+          csrfmiddlewaretoken: token,
+      },
+      success: function(response){
+          alertify.success(response.status)
+      }
+  })
+} );
+
+
+$('.deleteCartItem').click(function (e){
+  e.preventDefault();
+  
+  
+  
+
+  var product_id = $(this).closest('.product_data').find('.prod_id').val();
+  var token = $('input[name=csrfmiddlewaretoken]').val();
+  
+
+  $.ajax({
+      method: "POST",
+      url: "/delete-cart-item",
+      data: {
+          'product_id': product_id,
+          csrfmiddlewaretoken: token,
+          
+      },
+      success: function(response){
+          
+          alertify.success(response.status);
+          
+          setTimeout(function(){
+         location.reload(); 
+      }, 800);
+          
+          
+      }
+  })
+} );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var lowerSlider = document.querySelector('#lower');
+var  upperSlider = document.querySelector('#upper');
+
+document.querySelector('#two').value=upperSlider.value;
+document.querySelector('#one').value=lowerSlider.value;
+
+var  lowerVal = parseInt(lowerSlider.value);
+var upperVal = parseInt(upperSlider.value);
+
+upperSlider.oninput = function () {
+    lowerVal = parseInt(lowerSlider.value);
+    upperVal = parseInt(upperSlider.value);
+
+    if (upperVal < lowerVal + 4) {
+        lowerSlider.value = upperVal - 4;
+        if (lowerVal == lowerSlider.min) {
+        upperSlider.value = 4;
+        }
+    }
+    document.querySelector('#two').value=this.value
+};
+
+lowerSlider.oninput = function () {
+    lowerVal = parseInt(lowerSlider.value);
+    upperVal = parseInt(upperSlider.value);
+    if (lowerVal > upperVal - 4) {
+        upperSlider.value = lowerVal + 4;
+        if (upperVal == upperSlider.max) {
+            lowerSlider.value = parseInt(upperSlider.max) - 4;
+        }
+    }
+    document.querySelector('#one').value=this.value
+}; 
+  
+</script>
+
+<!-- alertify -->
+
+
+
+
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/6202e85a9bd1f31184dba00d/1frdln8md';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+
+
+
+
+
+
+
+
+
+

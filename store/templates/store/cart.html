@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "store/inc/head.html" %}
+
+<body id="cart" class="lang-en country-in currency-inr layout-left-column page-cart tax-display-enabled"
+    data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="">
+    <div class="preloading"></div>
+
+
+
+
+    <main>
+
+
+        {% include "store/inc/header.html" %}
+
+
+        
+
+
+
+
+        <div class="breadcumb_outer">
+            <div class="breadcumb_inner">
+                <div class="container">
+
+                    <nav data-depth="1" class="breadcrumb hidden-sm-down">
+                        <ol itemscope="" >
+
+
+                            <li itemprop="itemListElement" itemscope="" >
+                                <a itemprop="item"
+                                    href="{% url 'home' %}"><span
+                                        itemprop="name">Home</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+
+
+                            <li>
+                                <span>Cart </span>
+                            </li>
+
+
+                        </ol>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+
+        <section id="wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="wrapper-inner">
+
+
+                        <div id="left-column" class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+
+
+                            <div class="block-categories hidden-sm-down">
+                                <ul class="category-top-menu">
+                                    <li><a class="text-uppercase h6"
+                                            href="{% url 'shop' %}">Shop</a>
+                                    </li>
+                                    <li>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+
+
+
+
+                            <div id="custom-leftbannerblock" class="custom-leftbannerblock">
+
+                                <p class="left-banner">
+                                    <a href="#" title="Left Banner Image 1">
+                                        <img src="https://demo.templatetrend.com/prestashop/PRS703_4/modules/ttleftbannerblock/views/img/leftbanner1.jpg"
+                                            alt="Left Banner Image 1" width="auto" height="auto">
+                                    </a>
+                                </p>
+
+                            </div>
+
+
+
+
+
+                            <section id="leftsidebar" class="leftsidebar">
+                                <h1 class="title">New products</h1>
+                                <div class="sidebar-products products clearfix">
+                                    <ul id="newproducts-grid" class="products-grid product-item">
+                                        {% for items in recent %}
+                                        <li class="item">
+
+                                            <article class="product-miniature js-product-miniature" data-id-product="13"
+                                                data-id-product-attribute="60" itemprop="item" itemscope="">
+                                                <div class="product_data" itemprop="itemListElement" itemscope="">
+
+                                                    <div itemprop="itemListElement" itemscope="">
+
+
+                                                        <div itemprop="itemListElement" itemscope="">
+                                                            <div class="thumbnail-container reviews-loading">
+                                                                <div class="thumbnail-inner">
+
+                                                                    <div class="thumbnail-image-inner">
+
+                                                                        <a href="{% url 'detail' items.pk items.category.name %}"
+                                                                            class="thumbnail product-thumbnail">
+                                                                            <img src="{{items.product_image1.url}}"
+                                                                                alt="Brown bear - Vector graphics"
+                                                                                data-full-size-image-url="{{items.product_image1.url}}">
+
+                                                                            <img class="fade replace-2x img-responsive ot_img_hover"
+                                                                                src="{{items.product_image2.url}}"
+                                                                                alt="Brown bear - Vector graphics"
+                                                                                itemprop="image"
+                                                                                title="Brown bear - Vector graphics">
+
+                                                                        </a>
+
+
+                                                                    </div>
+
+
+                                                                    <div class="thumbnail-sidebar-inner">
+                                                                        <div class="product-description">
+
+
+                                                                            <h2 class="h3 product-title"
+                                                                                itemprop="name"><a
+                                                                                    href="{% url 'detail' items.pk items.category.name %}"
+                                                                                    itemprop="url">
+                                                                                    {{items.name}}
+                                                                                </a></h2>
+
+
+
+                                                                            <div class="product-price-and-shipping">
+
+                                                                                <span class="sr-only">Price</span>
+                                                                                <span itemprop="price" class="price">ETB
+                                                                                    {{items.selling_price}}</span>
+
+
+
+
+
+
+                                                                                <div class="addtocart-button ">
+
+                                                                                    {% csrf_token %}
+                                                    <input type="hidden" value=" {{items.pk}}" class="prod_id" >
+                                                    <input type="hidden" min="1" class="qty-input"  max="1" value="1" type="number">
+                                                       
+                                                        <button class="btn btn-primary addtocartbtn">Add to cart</button>
+
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+
+                                        </li>
+                                        {% endfor %}
+
+
+                                    </ul>
+                                </div>
+                                <div class="clearfix">
+                                    <a href="{% url 'shop' %}" class="btn btn-primary allproducts">All Newproducts</a>
+                                </div>
+                            </section>
+
+
+                        </div>
+
+
+
+
+                        <div id="content-wrapper" class="left-column col-xs-12 col-sm-8 col-md-9">
+
+
+
+                            <section id="main">
+                                <div class="cart-grid row">
+
+                                    <!-- Left Block: cart product informations & shpping -->
+                                    <div class="cart-grid-body col-xs-12 col-lg-8">
+
+                                        <!-- cart products detailed -->
+                                        <div class="card cart-container">
+                                            <div class="card-block">
+                                                <h1 class="h1">Shopping Cart</h1>
+                                            </div>
+                                            <hr class="separator">
+
+
+                                            <div class="cart-overview js-cart"
+                                               >
+                                                <ul class="cart-items">
+                                                    
+                                                    {% if carts %}
+                                                    {% for cart in carts %}
+                                                    {% csrf_token %}
+                                                    <li class="cart-item">
+
+                                                        <div class="product-line-grid">
+                                                            <!--  product line left content: image-->
+                                                            <div class="product-line-grid-left col-md-3 col-xs-4">
+                                                                <span class="product-image media-middle">
+                                                                    <img src="{{cart.product.product_image1.url}}"
+                                                                        alt="Hummingbird printed t-shirt">
+                                                                </span>
+                                                            </div>
+
+                                                            <!--  product line body: label, discounts, price, attributes, customizations -->
+                                                            <div class="product-line-grid-body col-md-4 col-xs-8">
+                                                                <div class="product-line-info">
+                                                                    <a class="label"
+                                                                        href="#"
+                                                                        data-id_customization="0">{{cart.product.name}}
+                                                                        ({{cart.product.category.name}}) </a>
+                                                                </div>
+
+                                                                <div
+                                                                    class="product-line-info product-price h5 has-discount">
+                                                                    <div class="product-discount">
+                                                                        <span class="regular-price"> ETB {{cart.product.original_price | stringformat:'d'}} </span>
+                                                                        
+                                                                    </div>
+                                                                    <div class="current-price">
+                                                                        <span class="price">ETB {{cart.product.selling_price | stringformat:'d'}} </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <br>
+
+                                                                
+
+                                                            </div>
+
+                                                            <!--  product line right content: actions (quantity, delete), price -->
+                                                            <div
+                                                                class="product-line-grid-right product-line-actions col-md-5 col-xs-12">
+                                                                
+                                                                <div class="row product_data ">
+                                                                    <div class="col-xs-4 hidden-md-up"></div>
+                                                                    <div class="col-md-10 col-xs-6">
+                                                                        <div class="row">
+                                                                            <div class="col-md-6 col-xs-6 qty">
+                                                                                <input type="hidden" value=" {{cart.product.pk}}" class="prod_id" >
+                                                                                {% if cart.product.quantity >= cart.product_qty %}
+                                                                                <div>
+                                                                                    <div class="qty">
+                                                                                        <input type="number" name="qty" value="{{cart.product_qty}}" class="input-group form-control qty-input" max="{{cart.product.quantity}}" min="1" aria-label="Quantity" style="display: block;">
+                                                                                        
+                                                                                    </div>
+                                                                                   
+          
+                                                                                        
+                                                                                </div>
+                                                                                
+                                                                                {% else %}
+                                                                                
+                                                                                <td class="product_quantity"><label>Out of Stock</label></td>
+                                                                                {% endif %}
+                                                                                
+                                                                            </div>
+                                                                           
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-2 col-xs-2 text-xs-right">
+                                                                        <div class="cart-line-product-actions">
+                                                                            <a class="remove-from-cart" rel="nofollow"
+                                                                                >
+                                                                                <i
+                                                                                    class="material-icons float-xs-left deleteCartItem">delete</i>
+                                                                            </a>
+                                                                            <a  rel="nofollow"
+                                                                            >
+                                                                            <i
+                                                                                class="material-icons float-xs-left changeQuantity">Update</i>
+                                                                        </a>
+
+
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="clearfix"></div>
+                                                        </div>
+
+                                                    </li>
+                                                    {% endfor %}
+                                                    {% else %}
+                                                    <h3>Your cart is empty</h3>
+                                                      
+                                                    {% endif %}
+                                                        
+                                                    
+                                                    
+                                                </ul>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <a class="label"
+                                            href="{% url 'shop' %}">
+                                            <i class="material-icons"></i>Continue shopping
+                                        </a>
+
+
+                                        <!-- shipping informations -->
+
+
+
+                                    </div>
+
+                                    <!-- Right Block: cart subtotal & cart total -->
+                                    <div class="cart-grid-right col-xs-12 col-lg-4">
+
+
+                                        <div class="card cart-summary">
+
+
+
+
+
+
+
+                                            <div class="cart-detailed-totals">
+
+                                                <div class="card-block">
+                                                    <div class="cart-summary-line" id="cart-subtotal-products">
+                                                        <span class="label js-subtotal">
+                                                            {{cartcount}} items
+                                                        </span>
+                                                        <span class="value">
+                                                            ETB {{total_price}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="cart-summary-line" id="cart-subtotal-shipping">
+                                                        <span class="label">
+                                                            Shipping
+                                                        </span>
+                                                        <span class="value">
+                                                            Free
+                                                        </span>
+                                                        <div><small class="value"></small></div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="card-block cart-summary-totals">
+
+
+                                                    <div class="cart-summary-line cart-total">
+                                                        <span class="label">Total</span>
+                                                        <span class="value">ETB {{total_price}}</span>
+                                                    </div>
+
+
+
+
+
+                                                </div>
+
+
+
+
+                                            </div>
+
+
+
+
+
+                                            <div class="checkout cart-detailed-actions card-block">
+                                                <div class="text-sm-center">
+                                                    <a href="{% url 'checkout' %}"
+                                                        class="btn btn-primary">Proceed to checkout</a>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+
+
+                                       
+
+
+
+                                    </div>
+
+                                </div>
+                            </section>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {% include "store/inc/footer.html" %}
+
+    </main>
+
+    {% include "store/inc/scripts.html" %}
+
+
+
+
+
+
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

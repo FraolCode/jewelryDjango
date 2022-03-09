@@ -1,0 +1,463 @@
+{% load static %}
+{% load social_share %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "store/inc/head.html" %}
+
+<body id="product"
+    class="lang-en country-in currency-inr layout-full-width page-product tax-display-enabled product-id-4 product-the-adventure-begins-framed-poster product-id-category-9 product-id-manufacturer-2 product-id-supplier-0 product-available-for-order"
+    data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="">
+    <div class="preloading"></div>
+
+
+
+
+    <main>
+
+
+        {% include "store/inc/header.html" %}
+
+
+
+
+
+
+
+        <div class="breadcumb_outer">
+            <div class="breadcumb_inner">
+                <div class="container">
+
+                    <nav data-depth="3" class="breadcrumb hidden-sm-down">
+                        <ol itemscope="">
+
+
+                            <li itemprop="itemListElement" itemscope="">
+                                <a itemprop="item" href="{% url 'home' %}"><span itemprop="name">Home</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+
+
+                            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" href="{% url 'shop' %}"><span
+                                        itemprop="name">{{ItemDetail.category.name}} </span></a>
+                                <meta itemprop="position" content="2">
+                            </li>
+
+
+                            <li>
+                                <span>{{ItemDetail.name}}</span>
+                            </li>
+
+
+                        </ol>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <section id="wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="wrapper-inner">
+
+
+                        <div id="content-wrapper">
+
+
+
+                            <section id="main" class="container" itemscope="">
+                                <meta itemprop="url">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <section class="page-content" id="content">
+
+
+                                            <ul class="product-flags">
+                                                <li class="product-flag new">New</li>
+                                            </ul>
+
+
+
+                                            <div class="images-container">
+
+                                                <div class="product-cover">
+                                                    <img class="js-qv-product-cover"
+                                                        src="{{ItemDetail.product_image1.url}}" alt="" title=""
+                                                        style="width:100%;" itemprop="image">
+                                                    <div class="layer hidden-sm-down" data-toggle="modal"
+                                                        data-target="#product-modal">
+                                                        <i class="material-icons zoom-in">search</i>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="js-qv-mask mask scroll">
+                                                    <ul class="product-images js-qv-product-images">
+
+                                                        <li class="thumb-container">
+                                                            <img class="thumb js-thumb  selected "
+                                                                data-image-medium-src="{{ItemDetail.product_image1.url}}"
+                                                                data-image-large-src="{{ItemDetail.product_image1.url}}"
+                                                                src="{{ItemDetail.product_image1.url}}" alt="" title=""
+                                                                width="100" itemprop="image">
+                                                        </li>
+                                                        <li class="thumb-container">
+                                                            <img class="thumb js-thumb  selected "
+                                                                data-image-medium-src="{{ItemDetail.product_image2.url}}"
+                                                                data-image-large-src="{{ItemDetail.product_image2.url}}"
+                                                                src="{{ItemDetail.product_image2.url}}" alt="" title=""
+                                                                width="100" itemprop="image">
+                                                        </li>
+
+                                                        {% if ItemDetail.product_image3 %}
+                                                        <li class="thumb-container">
+                                                            <img class="thumb js-thumb  selected "
+                                                                data-image-medium-src="{{ItemDetail.product_image3.url}}"
+                                                                data-image-large-src="{{ItemDetail.product_image3.url}}"
+                                                                src="{{ItemDetail.product_image3.url}}" alt="" title=""
+                                                                width="100" itemprop="image">
+                                                        </li>
+                                                        {% endif %}
+
+
+                                                    </ul>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="scroll-box-arrows scroll">
+                                                <i class="material-icons left"></i>
+                                                <i class="material-icons right"></i>
+                                            </div>
+
+
+                                        </section>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+
+                                        <h1 class="h1" itemprop="name">{{ItemDetail.name}}</h1>
+
+
+
+
+
+
+
+
+
+                                        <div class="product-prices">
+
+
+
+
+                                            <div class="product-price h5 " itemprop="offers" itemscope="">
+                                                {% if ItemDetail.trending %}
+                                                <span class="current_price"
+                                                    style="color: rgb(207, 68, 68);">Trending</span>
+                                                {% endif %}
+                                                <br>
+                                                <br>
+                                                {% if ItemDetail.quantity > 0%}
+                                                <div class="product_variant quantity">
+                                                    <h5 class="button"
+                                                        style="background-color: rgb(9, 63, 18); padding: 5px; border-radius: 5px;">
+                                                        IN STOCK</h5>
+
+                                                </div>
+                                                {% else %}
+                                                <div class="product_variant quantity">
+                                                    <h5 class="button" style="background-color: rgb(126, 5, 5);">OUT OF
+                                                        STOCK</h5>
+
+                                                </div>
+                                                {% endif %}
+                                                <br>
+                                                <meta itemprop="priceCurrency">
+
+                                                <div class="current-price">
+                                                    <span itemprop="price">ETB {{ItemDetail.selling_price }}</span>
+
+                                                </div>
+
+
+
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
+
+
+                                        <div class="product-information">
+
+                                            <div id="product-description-short-4" class="product-description"
+                                                itemprop="description">
+                                                <h3> {{ItemDetail.small_description}} </h3>
+                                                <p> {{ItemDetail.description}} </p>
+                                            </div>
+
+
+
+                                            <div class="product-actions">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                <div class="product-add-to-cart product_data">
+                                                    <span class="control-label">Quantity</span>
+
+
+                                                    {% csrf_token %}
+                                                    <div class="product-quantity clearfix ">
+                                                        <div class="qty">
+                                                            <input type="number" name="qty" id="quantity_wanted"
+                                                                value="1" class="input-group form-control qty-input"
+                                                                min="1" aria-label="Quantity" style="display: block;">
+
+                                                        </div>
+
+                                                        <div class="add">
+                                                            <input type="hidden" value=" {{ItemDetail.pk}}"
+                                                                class="prod_id">
+                                                            <button class="btn btn-primary addtocartbtn">Add to
+                                                                cart</button>
+                                                        </div>
+
+
+                                                    </div>
+
+
+
+
+
+
+
+
+
+                                                </div>
+
+
+
+                                                <div class="product-additional-info">
+
+                                                    <div class="social-sharing">
+                                                        <span>Share</span>
+                                                        <ul>
+                                                            <li class="facebook icon-gray">
+                                                                {% post_to_facebook request.get_full_path %}
+
+                                                            <li class="twitter icon-gray">
+                                                                {% post_to_twitter request.get_full_path %}
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+
+                                                </div>
+
+
+
+
+
+
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="tabs">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#description" role="tab"
+                                                aria-controls="description" aria-selected="true">Description</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#productcomments" role="tab"
+                                                aria-controls="product-details">Reviews</a>
+                                        </li>
+
+                                    </ul>
+
+                                    <div class="tab-content" id="tab-content">
+                                        <div class="tab-pane fade in active" id="description" role="tabpanel">
+
+                                            <div class="product-description">
+                                                <h2> {{ItemDetail.small_description}} </h2>
+                                                <p> {{ItemDetail.description}} </p>
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+                                        <div class="tab-pane fade in" id="productcomments" role="tabpanel">
+                                            <form method="POST"  action="{% url 'addreview' %}">
+                                                {% csrf_token %}
+
+                                            
+                                            <div class="row ">
+                                                <div class="comments-nb">
+                                                    <i class="material-icons shopping-cart"></i>
+
+                                                    Write comment
+                                                </div>
+                                                <div class="col-md-20">
+                                                    <textarea
+                                                        style="background-color: aliceblue;color: rgb(136, 82, 46); border-radius: 10px; padding: 10px; "
+                                                        class="form-control product-comment-list-item row" required=""
+                                                        name="commented" placeholder="Write Comment " rows="3"></textarea>
+                                                </div>
+                                                <input type="hidden" name="productid" value="{{ItemDetail.id}}" >
+                                                <footer class="form-footer text-sm-right">
+
+
+
+                                                    <input class="btn btn-primary" type="submit" value="Comment">
+                                                </footer>
+                                            </div>
+                                        </form>
+
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12" id="product-comments-list-header">
+                                                    <div class="comments-nb">
+                                                        <i class="material-icons shopping-cart"></i>
+                                                        Comments ({{review_count}})
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+
+                                            {% if review %}
+                                            {% for rev in review %}
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12" id="product-comments-list">
+                                                    <div class="product-comment-list-item row"
+                                                        data-product-comment-id="4" data-product-id="2">
+                                                        <div class="col-md-3 col-sm-3 comment-infos">
+
+                                                            <div class="comment-date">
+                                                                {{rev.created_at}}
+                                                            </div>
+                                                            <div class="comment-author">
+                                                                By {{rev.user}}
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-9 col-sm-9 comment-content">
+
+                                                            <p>{{rev.comment}}</p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
+                                            {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+
+
+                            </section>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {% include "store/inc/footer.html" %}
+
+    </main>
+
+
+    {% include "store/inc/scripts.html" %}
+
+
+
+
+
+
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>

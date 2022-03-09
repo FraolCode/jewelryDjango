@@ -1,0 +1,390 @@
+.ot_img_hover {
+  width: 100%;
+  float: left;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* TI Image Zoom Effect */
+
+.product-miniature .product-thumbnail .zoom:nth-child(2),
+.product-miniature .product-thumbnail .zoom.ot_img_hover {
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  position: absolute;
+  top: 0px;
+  transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  -webkit-transform: scale(0);
+  transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+}
+
+.product-miniature .product-thumbnail:hover .zoom:nth-child(2),
+.product-miniature .product-thumbnail:hover .zoom.ot_img_hover {
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -webkit-transform: scale(1);
+}
+
+/* EO TI Image Zoom Effect */
+
+
+/* TI Image Fade Effect */
+
+.product-miniature .product-thumbnail .fade:nth-child(2),
+.product-miniature .product-thumbnail .fade.ot_img_hover {
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  position: absolute;
+  top: 0px;
+  transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+}
+
+.product-miniature .product-thumbnail:hover .fade:nth-child(2),
+.product-miniature .product-thumbnail:hover .fade.ot_img_hover {
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+}
+
+/* EO TI Image Fade Effect */
+
+
+/* TI Vertical Scrolling From Bottom To Top Effect */
+
+.product-miniature .product-thumbnail .vertical_scrolling_bottom_to_top:nth-child(2),
+.product-miniature .product-thumbnail .vertical_scrolling_bottom_to_top.ot_img_hover {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  transition: top 0.5s ease 0s;
+  -ms-transition: top 0.5s ease 0s;
+  -moz-transition: top 0.5s ease 0s;
+  -webkit-transition: top 0.5s ease 0s;
+  -o-transition: top 0.5s ease 0s;
+}
+
+.product-miniature .product-thumbnail:hover .vertical_scrolling_bottom_to_top:nth-child(2),
+.product-miniature .product-thumbnail:hover .vertical_scrolling_bottom_to_top.ot_img_hover {
+  top: 0;
+}
+
+/* EO TI Vertical Scrolling From Bottom To Top Effect */
+
+/* TI Vertical Scrolling Top To Bottom Effect */
+
+.product-miniature .product-thumbnail .vertical_scrolling_top_to_bottom:nth-child(2),
+.product-miniature .product-thumbnail .vertical_scrolling_top_to_bottom.ot_img_hover {
+  position: absolute;
+  top: -110%;
+  left: 0;
+  transition: top 0.5s ease 0s;
+  -ms-transition: top 0.5s ease 0s;
+  -moz-transition: top 0.5s ease 0s;
+  -webkit-transition: top 0.5s ease 0s;
+  -o-transition: top 0.5s ease 0s;
+}
+
+.product-miniature .product-thumbnail:hover .vertical_scrolling_top_to_bottom:nth-child(2),
+.product-miniature .product-thumbnail:hover .vertical_scrolling_top_to_bottom.ot_img_hover {
+  top: 0;
+}
+
+/* EO TI Vertical Scrolling Top To Bottom Effect */
+
+/* TI Horizontal Scrolling Left to Right Effect */
+
+.product-miniature .product-thumbnail .horizontal_scrolling_left_to_right:nth-child(2),
+.product-miniature .product-thumbnail .horizontal_scrolling_left_to_right.ot_img_hover {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  transition: left 0.5s ease 0s;
+  -ms-transition: left 0.5s ease 0s;
+  -moz-transition: left 0.5s ease 0s;
+  -webkit-transition: left 0.5s ease 0s;
+  -o-transition: left 0.5s ease 0s;
+}
+
+.product-miniature .product-thumbnail:hover .horizontal_scrolling_left_to_right:nth-child(2),
+.product-miniature .product-thumbnail:hover .horizontal_scrolling_left_to_right.ot_img_hover {
+  left: 0;
+}
+
+/* EO TI Horizontal Scrolling Left to Right Effect */
+
+/* TI Horizontal Scrolling Right to Left Effect */
+
+.product-miniature .product-thumbnail {
+  overflow: hidden;
+  position: relative;
+}
+
+.product-miniature .product-thumbnail .horizontal_scrolling_right_to_left:nth-child(2),
+.product-miniature .product-thumbnail .horizontal_scrolling_right_to_left.ot_img_hover {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  transition: right 0.5s ease 0s;
+  -ms-transition: rightright 0.5s ease 0s;
+  -moz-transition: right 0.5s ease 0s;
+  -webkit-transition: right 0.5s ease 0s;
+  -o-transition: right 0.5s ease 0s;
+}
+
+.product-miniature .product-thumbnail:hover .horizontal_scrolling_right_to_left:nth-child(2),
+.product-miniature .product-thumbnail:hover .horizontal_scrolling_right_to_left.ot_img_hover {
+  right: 0;
+}
+
+/* EO TI Horizontal Scrolling Right to Left Effect */
+
+
+/* TI Flipping Image */
+
+.product-miniature .product-thumbnail .flip:nth-child(2),
+.product-miniature .product-thumbnail .flip.ot_img_hover {
+  position: absolute;
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transform: scaleX(0);
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+}
+
+.product-miniature .product-thumbnail:hover .flip:nth-child(2),
+.product-miniature .product-thumbnail:hover .flip.ot_img_hover {
+  visibility: visible;
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  -o-transform: scaleX(1);
+}
+
+/* EO TI Flipping Image */
+
+
+/* TI Horizontal Rotating Left To Right Effect */
+
+.product-miniature .product-thumbnail .horizontal_rotate_from_left_to_right:nth-child(2),
+.product-miniature .product-thumbnail .horizontal_rotate_from_left_to_right.ot_img_hover {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  margin-left: auto;
+  margin-right: auto;
+  transform: rotateY(-90deg);
+  -webkit-transform: rotateY(-90deg);
+  -moz-transform: rotateY(-90deg);
+  -ms-transform: rotateY(-90deg);
+  -o-transform: rotateY(-90deg);
+  transform-origin: 0% 50%;
+  -webkit-transform-origin: 0% 50%;
+  -moz-transform-origin: 0% 50%;
+  -ms-transform-origin: 0% 50%;
+  -o-transform-origin: 0% 50%;
+}
+
+.product-miniature .product-thumbnail:hover .horizontal_rotate_from_left_to_right:nth-child(2),
+.product-miniature .product-thumbnail:hover .horizontal_rotate_from_left_to_right.ot_img_hover {
+  visibility: visible;
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+}
+
+/* EO TI Horizontal Rotating Left To Right Effect */
+
+
+/* TI Horizontal Rotating Right To Left Effect */
+
+.product-miniature .product-thumbnail .horizontal_rotate_from_right_to_left:nth-child(2),
+.product-miniature .product-thumbnail .horizontal_rotate_from_right_to_left.ot_img_hover {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  margin-left: auto;
+  margin-right: auto;
+  transform: rotateY(-90deg);
+  -webkit-transform: rotateY(-90deg);
+  -moz-transform: rotateY(-90deg);
+  -ms-transform: rotateY(-90deg);
+  -o-transform: rotateY(-90deg);
+  transform-origin: 100% 50%;
+  -webkit-transform-origin: 100% 50%;
+  -moz-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  -o-transform-origin: 100% 50%;
+}
+
+.product-miniature .product-thumbnail:hover .horizontal_rotate_from_right_to_left:nth-child(2),
+.product-miniature .product-thumbnail:hover .horizontal_rotate_from_right_to_left.ot_img_hover {
+  visibility: visible;
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+}
+
+/* EO TI Horizontal Rotating Right To Left Effect */
+
+
+/* TI Vertical Rotating Top To Bottom Effect */
+
+.product-miniature .product-thumbnail .vertical_rotate_from_top_to_bottom:nth-child(2),
+.product-miniature .product-thumbnail .vertical_rotate_from_top_to_bottom.ot_img_hover {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  margin-left: auto;
+  margin-right: auto;
+  transform: rotateX(-90deg);
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  -o-transform: rotateX(-90deg);
+  transform-origin: 50% 0%;
+  -webkit-transform-origin: 50% 0%;
+  -moz-transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  -o-transform-origin: 50% 0%;
+}
+
+.product-miniature .product-thumbnail:hover .vertical_rotate_from_top_to_bottom:nth-child(2),
+.product-miniature .product-thumbnail:hover .vertical_rotate_from_top_to_bottom.ot_img_hover {
+  visibility: visible;
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  transform: rotateX(0deg);
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  -o-transform: rotateX(0deg);
+}
+
+/* EO TI Vertical Rotating Top To Bottom Effect */
+
+
+/* TI Vertical Rotating Bottom To Top Effect */
+
+.product-miniature .product-thumbnail .vertical_rotate_from_bottom_to_top:nth-child(2),
+.product-miniature .product-thumbnail .vertical_rotate_from_bottom_to_top.ot_img_hover {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  margin-left: auto;
+  margin-right: auto;
+  transform: rotateX(-90deg);
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  -o-transform: rotateX(-90deg);
+  transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  -o-transform-origin: 50% 100%;
+}
+
+.product-miniature .product-thumbnail:hover .vertical_rotate_from_bottom_to_top:nth-child(2),
+.product-miniature .product-thumbnail:hover .vertical_rotate_from_bottom_to_top.ot_img_hover {
+  visibility: visible;
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  transform: rotateX(0deg);
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  -o-transform: rotateX(0deg);
+}
+
+/* EO TI Vertical Rotating Bottom To Top Effect */

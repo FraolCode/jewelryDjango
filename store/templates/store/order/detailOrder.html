@@ -1,0 +1,280 @@
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "store/inc/head.html" %}
+
+<body id="order-detail" class="lang-en country-in currency-inr layout-full-width page-order-detail tax-display-enabled"
+    data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="">
+    <div class="preloading"></div>
+
+
+
+
+    <main>
+
+
+        {% include "store/inc/header.html" %}
+
+
+
+
+        <div class="breadcumb_outer">
+            <div class="breadcumb_inner">
+                <div class="container">
+
+                    <nav data-depth="4" class="breadcrumb hidden-sm-down">
+                        <ol itemscope="">
+
+
+                            <li itemprop="itemListElement" itemscope="">
+                                <a itemprop="item" href="{% url 'home' %}"><span itemprop="name">Home</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+
+
+                            <li itemprop="itemListElement" itemscope="">
+                                <a itemprop="item" href="{% url 'account' %}"><span itemprop="name">{{user}} </span></a>
+                                <meta itemprop="position" content="2">
+                            </li>
+
+
+                            <li itemprop="itemListElement" itemscope="">
+                                <a itemprop="item" href="{% url 'vieworder' %}"><span itemprop="name">Order
+                                        history</span></a>
+                                <meta itemprop="position" content="3">
+                            </li>
+
+
+                            <li>
+                                <span> {{order.traking_no}} </span>
+                            </li>
+
+
+                        </ol>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+        <section id="wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="wrapper-inner">
+
+
+                        <div id="content-wrapper">
+
+
+
+                            <section id="main">
+
+
+
+                                <header class="page-header">
+                                    <h1>
+                                        Order details
+                                    </h1>
+                                </header>
+
+
+
+
+                                <section id="content" class="page-content">
+
+
+
+
+
+
+
+                                    <div id="order-infos">
+                                        <div class="box">
+                                            <div class="row">
+                                                <div class="col-xs-9">
+                                                    <strong>
+                                                        Order Reference {{order.traking_no}} - placed on
+                                                        {{order.created_at}}
+                                                    </strong>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <section id="order-history" class="box">
+                                        <h3>Follow your order's status step-by-step</h3>
+                                        <table class="table table-striped table-bordered table-labeled hidden-xs-down">
+                                            <thead class="thead-default">
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td> {{order.created_at}} </td>
+                                                    <td>
+                                                        {% if order.status == 'Pending' %}
+                                                        <span class="label label-pill bright"
+                                                            style="background-color:#da1616">
+                                                            {{order.status}}
+                                                        </span>
+                                                        {% elif order.status == 'Out for Shipping' %}
+                                                        <span class="label label-pill bright"
+                                                            style="background-color:#d1dd2b">
+                                                            {{order.status}}
+                                                        </span>
+                                                        {% else %}
+                                                        <span class="label label-pill bright"
+                                                            style="background-color:#08e92e">
+                                                            {{order.status}}
+                                                        </span>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </section>
+
+
+
+
+                                    <div class="addresses">
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <article id="delivery-address" class="box">
+                                                <h4>Delivery address My Address</h4>
+                                                <address>First Name : {{profile.user.first_name}} <br>
+                                                    Last Name : {{profile.user.last_name}}<br>Email :
+                                                    {{profile.user.email}}
+                                                    <br>Phone Number : {{profile.phone}} 
+                                                    <br>City : {{profile.city}} 
+                                                    <br>Street Sddress : {{profile.street_address}} 
+                                                    <br>India<br>0913357402
+                                                </address>
+                                            </article>
+                                        </div>
+
+                                        
+                                    </div>
+
+
+
+
+
+
+                                    <div class="box hidden-sm-down">
+                                        <table id="order-products" class="table table-bordered">
+                                            <thead class="thead-default">
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th>Quantity</th>
+                                                    <th>Unit price</th>
+                                                    <th>Total price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for item in orderitems %}
+                                                <tr>
+                                                    <td>
+                                                        <strong>
+                                                            <a>
+                                                                {{item.product.name}} 
+                                                            </a>
+                                                        </strong>
+                                                    </td>
+                                                    <td>
+                                                        {{item.quantity}}
+                                                    </td>
+                                                    <td class="text-xs-right">ETB {{item.product.selling_price}}  </td>
+                                                    <td class="text-xs-right">ETB {{item.quantity|mul:item.product.selling_price}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                                
+                                                
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="text-xs-right line-products">
+                                                    <td colspan="3">Subtotal</td>
+                                                    <td>ETB {{order.total_price}} </td>
+                                                </tr>
+                                                <tr class="text-xs-right line-shipping">
+                                                    <td colspan="3">Shipping and handling</td>
+                                                    <td>Free</td>
+                                                </tr>
+                                                <tr class="text-xs-right line-total">
+                                                    <td colspan="3">Total</td>
+                                                    <td>ETB {{order.total_price}}</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+                                    
+
+
+
+
+                                    
+
+
+
+
+
+
+
+
+                                </section>
+
+
+
+                                <footer class="page-footer">
+
+
+
+                                    <a href="{% url 'account' %}"
+                                        class="account-link">
+                                        <i class="material-icons"></i>
+                                        <span>Back to your account</span>
+                                    </a>
+                                    <a href="{% url 'home' %}"
+                                        class="account-link">
+                                        <i class="material-icons"></i>
+                                        <span>Home</span>
+                                    </a>
+
+
+
+                                </footer>
+
+
+                            </section>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {% include "store/inc/footer.html" %}
+    </main>
+
+    {% include "store/inc/scripts.html" %}
+
+
+
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>

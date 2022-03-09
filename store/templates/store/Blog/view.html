@@ -1,0 +1,228 @@
+<html lang="en">
+
+{% include "store/inc/head.html" %}
+
+<body id="module-xipblog-single" class="lang-en country-in currency-inr layout-full-width page- tax-display-enabled"
+    data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="">
+    <div class="preloading"></div>
+
+
+
+
+    <main>
+
+
+        {% include "store/inc/header.html" %}
+
+
+        
+
+
+
+
+        <div class="breadcumb_outer">
+            <div class="breadcumb_inner">
+                <div class="container">
+
+                    <nav data-depth="4" class="breadcrumb hidden-sm-down">
+                        <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
+
+
+                            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item"
+                                    href="{% url 'home' %}"><span
+                                        itemprop="name">Home</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+
+
+                            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                
+                                {% if type == 'discount' %}
+                                    <a itemprop="item"
+                                    href="{% url 'blog' 'discount' %} "><span
+                                        itemprop="name">Blog discount</span></a>
+                                {% else %}
+                                <a itemprop="item"
+                                    href="{% url 'blog' 'event' %} "><span
+                                        itemprop="name">Blog event</span></a>
+                                {% endif %}
+                                    
+                                
+                                
+                            </li>
+
+
+                            
+
+
+                            <li>
+                                <span>{{events.title}} </span>
+                            </li>
+
+
+                        </ol>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+        <section id="wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="wrapper-inner">
+
+
+
+                        <div id="content-wrapper">
+
+
+
+                            <section id="main">
+
+
+
+
+                                <section id="content" class="page-content">
+                                    <div class="kr_blog_post_area single">
+                                        <div class="kr_blog_post_inner">
+                                            <article id="blog_post" class="blog_post blog_post_standrad">
+                                                <div class="blog_post_content">
+                                                    <div class="blog_post_content_top">
+
+                                                        <div class="post_thumbnail">
+                                                            <a href="">
+                                                                <img style="width: 600px;height: 400px;" class="xipblog_img img-responsive"
+                                                                    src="{{events.product.product_image1.url}} "
+                                                                    alt="{{events.title}} ">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="blog_post_content_bottom">
+                                                        <h3 class="post_title">{{events.title}} 
+                                                        {% if events.product %}
+                                                            on ({{events.product}})
+                                                        {% endif %}
+                                                             </h3>
+                                                             
+                                                             {% if type == 'discount' %}
+                                                             <div class="post_meta clearfix">
+
+                                                                <div class="meta_author">
+                                                                    <span>By Admin</span>
+                                                                </div>
+    
+                                                                <div class="post_meta_date">
+                                                                    {{events.created_at|date:"M d, Y"}}
+                                                                </div>
+    
+                                                                <div class="meta_category">
+                                                                    <span> Expired on {{events.ending_date |date:"M d, Y"}} </span>
+                                                                    
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            {% else %}
+                                                            <div class="post_meta clearfix">
+
+                                                                <div class="meta_author">
+                                                                    <span>By Admin</span>
+                                                                </div>
+    
+                                                                <div class="post_meta_date">
+                                                                    {{events.created_at|date:"M d, Y"}}
+                                                                </div>
+    
+                                                                <div class="meta_category">
+                                                                    <span> Expired on {{events.ending_date |date:"M d, Y"}} </span>
+                                                                    
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <br>
+                                                            <div class="post_meta clearfix">
+    
+                                                                <div class="meta_author">
+                                                                    <span>link</span>
+                                                                </div>
+    
+                                                                <div class="post_meta_date">
+                                                                    {{events.link}}
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <br>
+                                                            <div class="post_meta clearfix">
+    
+                                                                <div class="meta_author">
+                                                                    <span>Downloadable document</span>
+                                                                </div>
+    
+                                                                <div class="post_meta_date">
+                                                                    no doc{{events.docs}}
+                                                                </div>
+                                                                
+                                                            </div>
+                                                             {% endif %}
+                                                                 
+                                                             
+                                                        <div class="post_content">
+                                                            <p>{{events.description}}</p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                
+
+
+
+                                <footer class="page-footer">
+
+                                    <!-- Footer content -->
+
+                                </footer>
+
+
+                            </section>
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {% include "store/inc/footer.html" %}
+
+    </main>
+
+
+
+    {% include "store/inc/scripts.html" %}
+
+
+
+
+
+
+    
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>
+
+
+
+

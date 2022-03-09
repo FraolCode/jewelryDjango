@@ -1,0 +1,232 @@
+<html lang="en">
+
+{% include "store/inc/head.html" %}
+
+<body id="contact" class="lang-en country-in currency-usd layout-left-column page-contact tax-display-enabled"
+    data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="">
+    <div class="preloading"></div>
+
+
+
+
+    <main>
+
+
+        {% include "store/inc/header.html" %}
+
+
+        
+
+
+
+
+        <div class="breadcumb_outer">
+            <div class="breadcumb_inner">
+                <div class="container">
+
+                    <nav data-depth="2" class="breadcrumb hidden-sm-down">
+                        <ol itemscope="" >
+
+
+                            <li itemprop="itemListElement" itemscope="" >
+                                <a itemprop="item"
+                                    href="{% url 'home' %}"><span
+                                        itemprop="name">Home</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+
+
+                            <li>
+                                <span>Contact us</span>
+                            </li>
+
+
+                        </ol>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <section id="wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="wrapper-inner">
+                        <div id="left-column" class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="contact-rich">
+                                <h4>Store information</h4>
+                                <div class="block">
+                                    <div class="icon"><i class="material-icons"></i></div>
+                                    <div class="data">Africa Jewellery Store<br>Ethiopia</div>
+                                </div>
+                                <hr>
+                                <div class="block">
+                                    <div class="icon"><i class="material-icons"></i></div>
+                                    <div class="data email">
+                                        Email us:<br>
+                                    </div>
+                                    <a href="mailto:demo@prestashop.com">demo@prestashop.com</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div id="content-wrapper" class="left-column col-xs-12 col-sm-8 col-md-9">
+
+
+
+                            <section id="main">
+
+
+
+
+                                <section id="content" class="page-content card card-block">
+
+
+                                    <section class="contact-form">
+                                        <form
+                                            action="{% url 'addcontact' %}"
+                                            method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+
+
+                                            <section class="form-fields">
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-9 col-md-offset-3">
+                                                        <h3>Contact us</h3>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 form-control-label">Subject</label>
+                                                    <div class="col-md-6">
+                                                        <select name="subject"
+                                                            class="form-control form-control-select">
+                                                            <option value="2">Customer service</option>
+                                                            <option value="1">Web service</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 form-control-label">First Name</label>
+                                                    <div class="col-md-6">
+                                                        <input  required class="form-control" name="fname" type="text"
+                                                        {% if request.user.first_name %} disabled value=" {{request.user.first_name}} " {% endif %} placeholder="Enter you First name">
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 form-control-label">Last Name</label>
+                                                    <div class="col-md-6">
+                                                        <input required class="form-control" name="lname" type="text"
+                                                        {% if request.user.last_name %} disabled value=" {{request.user.last_name}} " {% endif %} placeholder="Enter you Last name">
+                                                    </div>
+                                                </div>
+                                                
+                                                    
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 form-control-label">Email address</label>
+                                                    <div class="col-md-6">
+                                                        <input required class="form-control" name="email" type="email"
+                                                           disabled value="{{request.user.email}}" placeholder="your@email.com">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 form-control-label">Order reference</label>
+                                                    <div class="col-md-6">
+                                                        <select name="order_ref"
+                                                            class="form-control form-control-select">
+                                                            <option value="">Select reference</option>
+                                                            {% for orders in order %}
+                                                            <option value="{{orders.pk}}">{{orders.traking_no}} </option>
+                                                            {% endfor %}
+                                                            
+                                                            
+                                                        </select>
+                                                    </div>
+                                                    <span class="col-md-3 form-control-comment">
+                                                        optional
+                                                    </span>
+                                                </div>
+
+                                                
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 form-control-label">Message</label>
+                                                    <div class="col-md-9">
+                                                        <textarea class="form-control" required name="message"
+                                                            placeholder="How can we help?" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                
+
+                                            </section>
+
+                                            <footer class="form-footer text-sm-right">
+                                                
+                                               
+                                               
+                                                <input class="btn btn-primary" type="submit" 
+                                                    value="Send">
+                                            </footer>
+
+                                        </form>
+                                    </section>
+
+
+                                </section>
+
+
+
+                                <footer class="page-footer">
+
+                                    <!-- Footer content -->
+
+                                </footer>
+
+
+                            </section>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {% include "store/inc/footer.html" %}
+
+    </main>
+{% include "store/inc/scripts.html" %}
+
+
+
+
+
+
+   
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>
+
+
+
+

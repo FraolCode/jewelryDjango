@@ -1,0 +1,397 @@
+{% load static %}
+<html lang="en">
+<!-- Mirrored from demo.templatetrend.com/prestashop/PRS703_4/index.php?controller=authentication&back=my-account by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Feb 2022 13:19:01 GMT -->
+<!-- Added by HTTrack -->
+
+{% include "store/inc/head.html" %}
+
+<body id="authentication"
+    class="lang-en country-in currency-usd layout-left-column page-authentication tax-display-enabled page-customer-account">
+    <div class="preloading"></div>
+
+
+
+
+    <main>
+
+
+        {% include "store/inc/header.html" %}
+
+
+        <aside id="notifications">
+            <div class="container">
+
+
+
+            </div>
+        </aside>
+
+
+
+
+        <div class="breadcumb_outer">
+            <div class="breadcumb_inner">
+                <div class="container">
+
+                    <nav data-depth="2" class="breadcrumb hidden-sm-down">
+                        <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
+
+
+                            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" href="{% url 'home' %}"><span itemprop="name">Home</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+
+
+                            <li>
+                                <span>Log in to your account</span>
+                            </li>
+
+
+                        </ol>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+        <section id="wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="wrapper-inner">
+                        <div id="left-column" class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+
+
+                            <div class="block-categories hidden-sm-down">
+                                <ul class="category-top-menu">
+                                    <li><a class="text-uppercase h6"
+                                            href="{% url 'shop' %}">Shop</a>
+                                    </li>
+                                    <li>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="custom-leftbannerblock" class="custom-leftbannerblock">
+
+                                <p class="left-banner">
+                                    <a href="#" title="Left Banner Image 1">
+                                        <img src="https://demo.templatetrend.com/prestashop/PRS703_4/modules/ttleftbannerblock/views/img/leftbanner1.jpg"
+                                            alt="Left Banner Image 1" width="auto" height="auto">
+                                    </a>
+                                </p>
+
+                            </div>
+                            <section id="leftsidebar" class="leftsidebar">
+                                <h1 class="title">New products</h1>
+                                <div class="sidebar-products products clearfix">
+                                    <ul id="newproducts-grid" class="products-grid product-item">
+                                        {% for items in recent %}
+                                        <li class="item">
+
+                                            <article class="product-miniature js-product-miniature" data-id-product="13"
+                                                data-id-product-attribute="60" itemprop="item" itemscope="">
+                                                <div class="product_data" itemprop="itemListElement" itemscope="">
+
+                                                    <div itemprop="itemListElement" itemscope="">
+
+
+                                                        <div itemprop="itemListElement" itemscope="">
+                                                            <div class="thumbnail-container reviews-loading">
+                                                                <div class="thumbnail-inner">
+
+                                                                    <div class="thumbnail-image-inner">
+
+                                                                        <a href="{% url 'detail' items.pk items.category.name %}"
+                                                                            class="thumbnail product-thumbnail">
+                                                                            <img src="{{items.product_image1.url}}"
+                                                                                alt="Brown bear - Vector graphics"
+                                                                                data-full-size-image-url="{{items.product_image1.url}}">
+
+                                                                            <img class="fade replace-2x img-responsive ot_img_hover"
+                                                                                src="{{items.product_image2.url}}"
+                                                                                alt="Brown bear - Vector graphics"
+                                                                                itemprop="image"
+                                                                                title="Brown bear - Vector graphics">
+
+                                                                        </a>
+
+
+                                                                    </div>
+
+
+                                                                    <div class="thumbnail-sidebar-inner">
+                                                                        <div class="product-description">
+
+
+                                                                            <h2 class="h3 product-title"
+                                                                                itemprop="name"><a
+                                                                                    href="{% url 'detail' items.pk items.category.name %}"
+                                                                                    itemprop="url">
+                                                                                    {{items.name}}
+                                                                                </a></h2>
+
+
+
+                                                                            <div class="product-price-and-shipping">
+
+                                                                                <span class="sr-only">Price</span>
+                                                                                <span itemprop="price" class="price">ETB
+                                                                                    {{items.selling_price}}</span>
+
+
+
+
+
+
+                                                                                <div class="addtocart-button ">
+
+                                                                                    {% csrf_token %}
+                                                    <input type="hidden" value=" {{items.pk}}" class="prod_id" >
+                                                    <input type="hidden" min="1" class="qty-input"  max="1" value="1" type="number">
+                                                       
+                                                        <button class="btn btn-primary addtocartbtn">Add to cart</button>
+
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+
+                                        </li>
+                                        {% endfor %}
+
+
+                                    </ul>
+                                </div>
+                                <div class="clearfix">
+                                    <a href="{% url 'shop' %}" class="btn btn-primary allproducts">All Newproducts</a>
+                                </div>
+                            </section>
+
+
+                        </div>
+
+
+
+
+                        <div id="content-wrapper" class="left-column col-xs-12 col-sm-8 col-md-9">
+
+
+
+                            <section id="main">
+
+
+
+                                <header class="page-header">
+                                    <h1>
+                                        Log in to your account
+                                    </h1>
+                                </header>
+
+
+
+
+                                <section id="content" class="page-content card card-block">
+
+
+
+                                    <section class="login-form">
+
+
+
+
+
+                                        <form id="login-form" action="" method="post">
+                                            {% csrf_token %}
+                                            <section>
+
+
+
+
+                                                <input type="hidden" name="back" value="my-account">
+
+
+
+
+
+
+                                                <div class="form-group row ">
+                                                    <label class="col-md-3 form-control-label required">
+                                                        Username
+                                                    </label>
+                                                    <div class="col-md-6">
+
+
+
+                                                        <input class="form-control" required name="username" type="username" value=""
+                                                            required="">
+
+
+
+
+
+
+                                                    </div>
+
+                                                    <div class="col-md-3 form-control-comment">
+
+
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                <div class="form-group row ">
+                                                    <label class="col-md-3 form-control-label required">
+                                                        Password
+                                                    </label>
+                                                    <div class="col-md-6">
+
+
+
+                                                        <div class="input-group js-parent-focus">
+                                                            <input
+                                                                class="form-control js-child-focus js-visible-password"
+                                                                name="password" title="At least 5 characters long"
+                                                                type="password" value="" pattern=".{5,}" required>
+                                                            <span class="input-group-btn">
+                                                                <button class="btn" type="button"
+                                                                    data-action="show-password" data-text-show="Show"
+                                                                    data-text-hide="Hide">
+                                                                    Show
+                                                                </button>
+                                                            </span>
+                                                        </div>
+
+
+
+
+
+
+                                                    </div>
+
+                                                    <div class="col-md-3 form-control-comment">
+
+
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="forgot-password">
+                                                    <a href="index91e9.html?controller=password" rel="nofollow">
+                                                        Forgot your password?
+                                                    </a>
+                                                </div>
+                                            </section>
+
+
+                                            <footer class="form-footer text-sm-center clearfix">
+                                                <input type="hidden" name="submitLogin" value="1">
+
+                                                <button id="submit-login" class="btn btn-primary"
+                                                    data-link-action="sign-in" type="submit">
+                                                    Sign in
+                                                </button>
+
+                                            </footer>
+
+
+                                        </form>
+
+
+                                    </section>
+                                    <hr>
+
+
+
+                                    <div class="no-account">
+                                        <a href="{% url 'register' %}"
+                                            data-link-action="display-register-form">
+                                            No account? Create one here
+                                        </a>
+                                    </div>
+
+
+                                </section>
+
+
+
+                                <footer class="page-footer">
+
+                                    <!-- Footer content -->
+
+                                </footer>
+
+
+                            </section>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {% include "store/inc/footer.html" %}
+
+    </main>
+
+    {% include "store/inc/scripts.html" %}
+
+
+
+
+
+
+
+
+    <!-- Mirrored from demo.templatetrend.com/prestashop/PRS703_4/index.php?controller=authentication&back=my-account by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Feb 2022 13:19:04 GMT -->
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0"
+        style="display: none;"></ul>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

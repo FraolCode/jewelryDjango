@@ -1,0 +1,513 @@
+{% load mathfilters %}
+<html lang="en">
+    {% include "store/inc/head.html" %}
+    
+      <body id="checkout" class="lang-en country-in currency-inr layout-left-column page-order tax-display-enabled" data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="">
+    
+        
+          
+        
+        {% include "store/inc/header.html" %}
+        
+    
+        
+          
+    
+        
+    
+        <section id="wrapper">
+          
+          <div class="container">
+    
+          
+            <section id="content">
+              <div class="row">
+                <div class="cart-grid-body col-xs-12 col-lg-8">
+                  
+                      
+    
+    
+    
+      
+      <section id="checkout-addresses-step" class="checkout-step -current -reachable ">
+        <h1 class="step-title h3">
+          <i class="material-icons rtl-no-flip done"></i>
+          <span class="step-number"></span>
+          Addresses
+          
+         
+        </h1>
+        <br>
+        <div class="content">
+          
+      <div class="js-address-form">
+        <form method="POST" action="{% url 'placeorder' %}">
+            {% csrf_token %}
+          
+                  <p>
+              The selected address will be used both as your personal address and as your delivery address.
+            </p>
+          
+                  <div id="delivery-address">
+              
+      <div class="js-address-form">
+        
+        
+        
+    
+    
+          
+            <section class="form-fields">
+              
+                              
+          
+                    
+      
+        
+      
+    
+    
+                  
+      
+                              
+          
+                    
+      
+       
+      
+    
+    
+                  
+      
+                              
+          
+                    
+      <div class="form-group row ">
+        <label class="col-md-3 form-control-label">
+            First Name
+              </label>
+        <div class="col-md-6">
+    
+          
+            
+              <input class="form-control" required name="fname" type="text" {% if request.user.first_name %}
+              value=" {{request.user.first_name}} "
+            {% endif %} placeholder="Enter first name"  maxlength="32">
+                      
+    
+          
+          
+                  
+    
+        </div>
+    
+        
+      </div>
+    
+    
+                  
+      
+                              
+          
+                    
+      <div class="form-group row ">
+        <label class="col-md-3 form-control-label required">
+            Last Name
+              </label>
+        <div class="col-md-6">
+    
+          
+            
+              <input class="form-control" {% if request.user.last_name %}
+              value=" {{request.user.last_name}} " 
+           {% endif %}   required name="lname" placeholder="Enter last name" maxlength="255" required="">
+                      
+    
+          
+          
+                  
+    
+        </div>
+    
+        <div class="col-md-3 form-control-comment">
+          
+                  
+        </div>
+      </div>
+    
+    
+                  
+      
+                              
+          
+                    
+      <div class="form-group row ">
+        <label class="col-md-3 form-control-label required">
+            Email Address
+              </label>
+        <div class="col-md-6">
+    
+          
+            
+              <input class="form-control" type="email" required value=" {{request.user.email}} "  name="email" placeholder="Enter your Email" required="">
+                      
+    
+          
+          
+                  
+    
+        </div>
+    
+        <div class="col-md-3 form-control-comment">
+          
+                  
+        </div>
+      </div>
+    
+    
+                  
+      
+                              
+          
+                    
+      <div class="form-group row ">
+        <label class="col-md-3 form-control-label">
+            Phone Number
+              </label>
+        <div class="col-md-6">
+    
+          
+            
+              <input class="form-control" type="phone" {% if userprofile.phone %}
+              value=" {{userprofile.phone}} " 
+            {% endif %}  required name="phoneno" placeholder="Enter phone number">
+                      
+    
+          
+          
+                  
+    
+        </div>
+    
+        <div class="col-md-3 form-control-comment">
+          
+                     
+                  
+        </div>
+      </div>
+    
+    
+                  
+      
+                              
+          
+                    
+      <div class="form-group row ">
+        <label class="col-md-3 form-control-label">
+            Street address
+              </label>
+        <div class="col-md-6">
+    
+          
+            
+              <input class="form-control" required  {% if userprofile.street_address %}
+              value=" {{userprofile.street_address}} "
+            {% endif %}   name="streetaddress" placeholder="1313 K.K " type="text">
+                      
+    
+          
+          
+                  
+    
+        </div>
+    
+        <div class="col-md-3 form-control-comment">
+          
+                     
+                  
+        </div>
+      </div>
+    
+    
+                  
+      
+                              
+          
+                    
+      <div class="form-group row ">
+        <label class="col-md-3 form-control-label required">
+            Town / City
+              </label>
+        <div class="col-md-6">
+    
+          
+            
+              <input class="form-control"  name="city" {% if userprofile.city %}
+              value=" {{userprofile.city}} " 
+            {% endif %} type="text" placeholder="Enter Town / City name" required="">
+                      
+    
+          
+          
+                  
+    
+        </div>
+    
+        <div class="col-md-3 form-control-comment">
+          
+                  
+        </div>
+      </div>
+    
+    
+                  
+      
+                              
+          
+                    
+      <div class="form-group row ">
+        <label class="col-md-3 form-control-label">
+            Order Notes
+              </label>
+        <div class="col-md-6">
+    
+            <textarea class="form-control" name="ordernotes" id="order_note" placeholder="Notes about your order, e.g. special notes for delivery.(optional)"></textarea>
+            
+              
+                      
+    
+          
+          
+                  
+    
+        </div>
+    
+        <div class="col-md-3 form-control-comment">
+          
+                     Optional
+                  
+        </div>
+      </div>
+    
+    
+                  
+      
+                              
+          
+                    
+      
+    
+    
+                  
+      
+                              
+          
+                    
+      
+    
+                  
+      
+                              
+          
+                    
+      
+    
+    
+                  
+      
+                              
+          
+                    
+      
+    
+                  
+      
+                              
+          
+     
+    
+    
+                  
+      
+                          
+     
+          
+      
+            </section>
+          
+    
+          {% if cartcount > 0 %}
+            <footer class="form-footer clearfix">
+            <input type="hidden" name="submitAddress" value="1">
+            
+          
+          <button type="submit" class="continue btn btn-primary float-xs-right" >
+              Continue
+          </button>
+              
+      
+          </footer>
+          {% endif %}
+          
+          
+    
+        
+      </div>
+    
+    
+            </div></form>
+          
+          
+          
+        
+      </div>
+    
+        </div>
+      </section>
+    
+    
+      
+     
+    
+    
+      
+      
+    
+    
+    
+                  
+                </div>
+                <div class="col-md-4">
+    
+                  
+                    <section id="js-checkout-summary" class="card js-cart" >
+      <div class="card-block">
+        
+          
+        
+    
+        
+          <div class="cart-summary-products">
+    
+            <p> {{cartcount}} items</p>
+    
+            <p>
+              <a href="#" data-toggle="collapse" data-target="#cart-summary-product-list" class="collapsed" aria-expanded="false">
+                show details
+                <i class="material-icons">expand_more</i>
+              </a>
+            </p>
+    
+            
+              <div class="collapse" id="cart-summary-product-list" aria-expanded="false" >
+                <ul class="media-list">
+                              {% for cart in carts %}
+                                <li class="media">
+      <div class="media-left">
+        <a href="{% url 'viewcart' %}">
+          <img class="media-object" src=" {{cart.product.product_image1.url}} " alt="{{cart.product.name}} ">
+        </a>
+      </div>
+      <div class="media-body">
+        <span class="product-name">{{cart.product}}</span>
+        <span class=""> x {{cart.product_qty}} </span>
+        <span class="product-price float-xs-right">ETB {{cart.product_qty|mul:cart.product.selling_price}} </span>
+        
+                
+            <br>
+      </div>
+    
+    </li>
+                              {% endfor %}    
+                                  
+                                  
+                              </ul>
+              </div>
+            
+          </div>
+        
+    
+      
+        <div class="card-block cart-summary-subtotals-container">
+    
+                <div class="cart-summary-line cart-summary-subtotals" id="cart-subtotal-products">
+    
+            <span class="label">
+                Subtotal
+            </span>
+    
+            <span class="value">
+              ETB {{total_price}}
+            </span>
+          </div>
+                          <div class="cart-summary-line cart-summary-subtotals" id="cart-subtotal-shipping">
+    
+            <span class="label">
+                Shipping
+            </span>
+    
+            <span class="value">
+              Free
+            </span>
+          </div>
+                
+    </div>
+    
+      
+    
+      </div>
+    
+      
+        <div class="card-block cart-summary-totals">
+    
+      
+              <div class="cart-summary-line cart-total">
+            <span class="label">Total</span>
+            <span class="value">ETB {{total_price}}</span>
+          </div>
+          
+          
+          
+    
+      
+          
+    
+    </div>
+      
+    
+      
+          
+    
+    </section>
+                  
+    
+                 
+    
+                </div>
+              </div>
+            </section>
+          
+          </div>
+          
+        </section>
+    
+        {% include "store/inc/footer.html" %}
+    
+        
+        
+        {% include "store/inc/scripts.html" %}
+        
+          
+        
+    
+      
+    
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul><gdiv class="ginger-extension-writer" style="display: none;"><gdiv class="ginger-extension-writer-frame"><iframe src="chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/writer/index.html"></iframe></gdiv></gdiv></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+
+
+
+
+
+
+
+

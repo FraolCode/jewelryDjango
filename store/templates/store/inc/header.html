@@ -1,0 +1,331 @@
+{% load static %}
+{% load mathfilters %}
+
+
+<header id="header">
+
+
+
+  <nav class="header-nav">
+    <div class="container">
+
+      <div class="header-left-wrapper">
+
+      </div>
+
+
+      <div class="header-right-wrapper">
+        <div id="_desktop_language_selector">
+
+        </div>
+        <div id="_desktop_currency_selector">
+
+        </div>
+
+      </div>
+
+      <div class="hidden-md-up text-xs-center mobile">
+        <div class="float-xs-left" id="menu-icon">
+          <i class="material-icons d-inline"></i>
+        </div>
+        <div class="float-xs-right" id="_mobile_cart"></div>
+        <div class="float-xs-right" id="_mobile_user_info"></div>
+        <div class="top-logo" id="_mobile_logo"></div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+
+  <div class="header-top">
+    <div class="container">
+
+      <div class="header-top-wrapper">
+
+
+        <div class="hidden-sm-down" id="_desktop_logo">
+          <div class="header-logo">
+            <a href="{% url 'home' %}">
+              <img class="logo img-responsive"
+                src="{% static 'assets/img/logo.png' %}"
+                alt="Innovative Jewellery Store">
+            </a>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="header-menu-wrapper">
+
+
+          <div class="main-menu">
+            <div class="menu js-top-menu position-static hidden-sm-down" id="_desktop_top_menu">
+
+              <ul class="top-menu" id="top-menu" data-depth="0">
+                
+                <li class="category noflex" id="category-6">
+                  <a class="dropdown-item"
+                    href="{% url 'shop' %}"
+                    data-depth="0">
+                    Shop
+                  </a>
+                </li>
+                <li class="category arrow flexcss" id="category-3">
+                  <a class="dropdown-item"
+                    href="{% url 'blog' 'discount'%}"
+                    data-depth="0">
+                    <span class="float-xs-right hidden-md-up">
+                      <span data-target="#top_sub_menu_38657" data-toggle="collapse"
+                        class="navbar-toggler collapse-icons">
+                        <i class="material-icons add"></i>
+                        <i class="material-icons remove"></i>
+                      </span>
+                    </span>
+                    Blog
+                  </a>
+                  <div class="popover sub-menu js-sub-menu collapse" id="top_sub_menu_38657" style="top: 92px;">
+
+                  <a href="{% url 'blog' 'discount' %}">
+                    <div class="menu-bottom-banners">
+                      <div class="menu-banner-image">
+                        <img src="{% static '/img/c/3-0_thumb.png' %}" alt="">
+                      </div>
+                    </div>
+                  </a>
+                  <a href="{% url 'blog' 'event' %} ">
+                    <div class="menu-bottom-banners">
+                      <div class="menu-banner-image">
+                        <img src="{% static 'img/c/3-0_thumb2.png' %}" alt="">
+                      </div>
+                    </div>
+                  </a>
+
+                   
+                    
+                    
+                </li>
+                <li class="category noflex" id="category-10">
+                  <a class="dropdown-item"
+                    href="{% url 'contactus' %}"
+                    data-depth="0">
+                    Contact Us
+                  </a>
+                </li>
+                <li class="category noflex" id="category-10">
+                  <a class="dropdown-item"
+                    href="{% url 'account' %}"
+                    data-depth="0">
+                    Account
+                  </a>
+                </li>
+                
+              </ul>
+
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="header-center">
+
+
+          
+          <div id="_desktop_cart">
+            <div class="blockcart cart-preview active"
+              
+              data-cartitems="5">
+              <div class="header">
+                <a rel="nofollow"
+                  href="{% url 'viewcart' %}">
+                  <i class="material-icons shopping-cart">shopping_cart</i>
+                  <span class="hidden-sm-down">Cart</span>
+                  
+                  
+                  
+                </a>
+              </div>
+              <div class="cart-popup">
+                <ul class="cart-product">
+                  
+                 
+                  {% for carts in cart %}
+                  
+                  {% if carts.user == user %}
+                  <li class="cart-product-item product_data">
+                    <input type="hidden" value=" {{carts.product.pk}}" class="prod_id" >
+                    <div class="img_content">
+                      <img width="100px" height="50px" class="product-image img-responsive"
+                        src="{{carts.product.product_image1.url}}"
+                        alt="" title="">
+
+                    </div>
+                    <div class="right_block">
+                      <span class="product-name">{{carts.product}}</span>
+                      <div class="price-block">
+                        <span class="product-quantity">{{carts.product_qty}}x</span>
+                        <span class="product-price">ETB {{carts.product.selling_price}}  </span>
+                      </div>
+                      <a class="remove-from-cart" rel="nofollow"
+                       
+                        data-link-action="delete-from-cart" data-id-product="1" data-id-product-attribute="2"
+                        data-id-customization="">
+                        <i class="material-icons pull-xs-left deleteCartItem ">delete</i>
+                      </a>
+                      
+                    </div>
+                  </li>
+                    
+                  {% endif %}
+                    
+                    
+                  {% endfor %}
+
+
+
+                 
+                  
+                </ul>
+                <div class="price_content">
+                  <div class="cart-subtotals">
+                    <div class="products price_inline">
+                      <span class="label">Subtotal</span>
+                      <span class="value">ETB {{total_price}} </span>
+                    </div>
+                    <div class=" price_inline">
+                      <span class="label"></span>
+                      <span class="value"></span>
+                    </div>
+                    <div class="shipping price_inline">
+                      <span class="label">Shipping</span>
+                      <span class="value">Free</span>
+                    </div>
+                    <div class=" price_inline">
+                      <span class="label"></span>
+                      <span class="value"></span>
+                    </div>
+                  </div>
+                  <div class="cart-total price_inline">
+                    <span class="label">Total</span>
+                    <span class="value">ETB {{total_price}}</span>
+                  </div>
+                </div>
+                <div class="checkout">
+                  <a href="{% url 'checkout' %} "
+                    class="btn btn-primary">checkout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+          <div id="_desktop_user_info">
+            <div class="user-info">
+              <div class="user-icon">
+
+                <span class="hidden-sm-down">My Account</span>
+                <i class="material-icons"></i>
+              </div>
+              <ul class="userinfo-toggle">
+                
+                {% if user.is_authenticated %}
+                <li>
+                  <a class="account"
+                    href="{% url 'account' %}"
+                    title="View my customer account" rel="nofollow">
+                    <!--<i class="material-icons hidden-md-up logged">&#xE7FF;</i>-->
+                    <span class="hidden-sm-down"> {{user}} </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="logout hidden-sm-down"
+                    href="{% url 'logout' %}" rel="nofollow">
+                    <!--<i class="material-icons">&#xE7FF;</i>-->
+                    Sign out
+                  </a>
+                </li>
+                {% else %}
+                <li>
+                  <a class="logout hidden-sm-down"
+                    href="{% url 'login' %}" rel="nofollow">
+                    <!--<i class="material-icons">&#xE7FF;</i>-->
+                    LogIn
+                  </a>
+                </li>
+                  
+                {% endif %}
+                  
+                
+                
+
+                
+              </ul>
+            </div>
+          </div><!-- Block search module TOP -->
+          <div id="search_widget" class="search-widget"
+            >
+            <form role="search" action="{% url 'search' %}" method="POST">
+              {% csrf_token %}
+              
+              <input type="text" name="q" id="searchform" value="" placeholder="Search" >
+              <button type="submit">
+                <i class="material-icons search"></i>
+              </button>
+            </form>
+          </div>
+          <!-- /Block search module TOP -->
+
+        </div>
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+</header>

@@ -1,0 +1,188 @@
+{% load static %}
+
+<footer id="footer">
+
+
+  <div class="footer-container">
+    <div class="footer-newsletter">
+
+      <div class="container">
+        <!-- <div class="block_newsletter"> -->
+
+          
+
+          
+
+        <!-- </div> -->
+      </div>
+
+
+    </div>
+
+
+
+
+    <div class="footer_top">
+      <div class="container">
+        <div class="footer_inner">
+
+          <div class="footerbottomleft-outer links">
+            <div id="footerbottomleft-text" class="wrapper  footer-cms col-md-3">
+              <div class="title">
+                <h3 class="h3">
+                  Africa
+                </h3>
+
+                <span class="pull-xs-right">
+                  <span class="navbar-toggler collapse-icons">
+                    <i class="material-icons add"></i>
+                    <i class="material-icons remove"></i>
+                  </span>
+                </span>
+              </div>
+              <ul class="footer-toggle">
+                <li>
+                  <div class="bottomcmsblock">
+                    <div class="bottomcmsinner">
+                      <div class="bottomcms_img">
+                        <a href="{% url 'home' %}"
+                          title="Africa Jewellery Store">
+                          <img style="width: 300px;"
+                            src="{% static 'assets/img/logo.png' %}"
+                            alt="Africa Jewellery Store" width="auto" height="auto">
+                        </a>
+                      </div>
+                      <div class="cmstext">
+                        <div class="address">
+                        {{about.about}} 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="links">
+            <div class="col-md-3 wrapper">
+              <div class="wrapper-footerinner">
+                <p class="h3 hidden-sm-down">Products</p>
+                <div class="title clearfix hidden-md-up" data-target="#footer_sub_menu_26346"
+                  data-toggle="collapse">
+                  <span class="h3">Products</span>
+                  <span class="float-xs-right">
+                    
+                  </span>
+                </div>
+                <ul id="footer_sub_menu_26346" class="collapse">
+                  {% for items in item %}
+                    <li>
+                    <a  class="cms-page-link"
+                      href="{% url 'detail' items.pk items.category.name %}"
+                      title="{{items.name}}">
+                      {{items.name}}
+                    </a>
+                  </li>
+                  {% endfor %}
+                  
+                  
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 wrapper">
+              <div class="wrapper-footerinner">
+                <p class="h3 hidden-sm-down">Our company</p>
+                <div class="title clearfix hidden-md-up" data-target="#footer_sub_menu_50926"
+                  data-toggle="collapse">
+                  <span class="h3">Our company</span>
+                  <span class="float-xs-right">
+                    <span class="navbar-toggler collapse-icons">
+                      <i class="material-icons add"></i>
+                      <i class="material-icons remove"></i>
+                    </span>
+                  </span>
+                </div>
+                <ul id="footer_sub_menu_50926" class="collapse">
+                  
+                  <li>
+                    <a id="link-cms-page-4-2" class="cms-page-link"
+                      href="#"
+                      title="Learn more about us">
+                      About us
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a id="link-static-page-contact-2" class="cms-page-link"
+                      href="{% url 'contactus' %}"
+                      title="Use our form to contact us">
+                      Contact us
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a id="link-static-page-stores-2" class="cms-page-link"
+                      href="{% url 'shop' %}"
+                      title="">
+                      Shop
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footerbottomright-outer links">
+            <div id="footerbottomright-text" class="wrapper  footer-cms col-md-3">
+              <div class="title">
+                <h3 class="h3">
+                  Contact us
+                </h3>
+                
+              </div>
+              <ul class="footer-toggle">
+                <li>
+                  <div class="bottomcmsblock">
+                    <div class="bottomcmsinner">
+                      <div class="cmstext">
+                        <ul>
+                          <li class="addresh-wrapper">
+                            <span>Location</span>
+                            <a href="#">
+                              {{about.city}}  |  {{about.street_address}}
+                            </a>
+                          </li>
+                          <li class="mobile-wrapper">
+                            <span>Phone</span>
+                            <a href="#">
+                              {{about.phone}} 
+                            </a>
+                          </li>
+                          <li class="email-wrapper">
+                            <span>Email</span>
+                            <a href="#">
+                              {{about.email}}
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          
+
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+
+</footer>

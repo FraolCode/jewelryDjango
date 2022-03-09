@@ -1,0 +1,297 @@
+<html lang="en">
+
+{% include "store/inc/head.html" %}
+
+<body id="my-account" class="lang-en country-in currency-inr layout-left-column page-my-account tax-display-enabled"
+    data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="">
+    <div class="preloading"></div>
+
+
+
+
+    <main>
+
+
+        {% include "store/inc/header.html" %}
+
+
+
+
+        <div class="breadcumb_outer">
+            <div class="breadcumb_inner">
+                <div class="container">
+
+                    <nav data-depth="2" class="breadcrumb hidden-sm-down">
+                        <ol itemscope="">
+
+
+                            <li itemprop="itemListElement" itemscope="" >
+                                <a itemprop="item"
+                                    href="{% url 'home' %}"><span
+                                        itemprop="name">Home</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+
+
+                            <li>
+                                <span>{{user}} </span>
+                            </li>
+
+
+                        </ol>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+        <section id="wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="wrapper-inner">
+                        <div id="left-column" class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+
+
+                            <div class="block-categories hidden-sm-down">
+                                <ul class="category-top-menu">
+                                    <li><a class="text-uppercase h6"
+                                            href="{% url 'shop' %}">Shop</a>
+                                    </li>
+                                    <li>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="custom-leftbannerblock" class="custom-leftbannerblock">
+
+                                <p class="left-banner">
+                                    <a href="#" title="Left Banner Image 1">
+                                        <img src="https://demo.templatetrend.com/prestashop/PRS703_4/modules/ttleftbannerblock/views/img/leftbanner1.jpg"
+                                            alt="Left Banner Image 1" width="auto" height="auto">
+                                    </a>
+                                </p>
+
+                            </div>
+                            <section id="leftsidebar" class="leftsidebar">
+                                <h1 class="title">New products</h1>
+                                <div class="sidebar-products products clearfix">
+                                    <ul id="newproducts-grid" class="products-grid product-item">
+                                        {% for items in item %}
+                                        <li class="item">
+
+                                            <article class="product-miniature js-product-miniature" data-id-product="13"
+                                                data-id-product-attribute="60" itemprop="item" itemscope="">
+                                                <div class="product_data" itemprop="itemListElement" itemscope="">
+
+                                                    <div itemprop="itemListElement" itemscope="">
+
+
+                                                        <div itemprop="itemListElement" itemscope="">
+                                                            <div class="thumbnail-container reviews-loading">
+                                                                <div class="thumbnail-inner">
+
+                                                                    <div class="thumbnail-image-inner">
+
+                                                                        <a href="{% url 'detail' items.pk items.category.name %}"
+                                                                            class="thumbnail product-thumbnail">
+                                                                            <img src="{{items.product_image1.url}}"
+                                                                                alt="Brown bear - Vector graphics"
+                                                                                data-full-size-image-url="{{items.product_image1.url}}">
+
+                                                                            <img class="fade replace-2x img-responsive ot_img_hover"
+                                                                                src="{{items.product_image2.url}}"
+                                                                                alt="Brown bear - Vector graphics"
+                                                                                itemprop="image"
+                                                                                title="Brown bear - Vector graphics">
+
+                                                                        </a>
+
+
+                                                                    </div>
+
+
+                                                                    <div class="thumbnail-sidebar-inner">
+                                                                        <div class="product-description">
+
+
+                                                                            <h2 class="h3 product-title"
+                                                                                itemprop="name"><a
+                                                                                    href="{% url 'detail' items.pk items.category.name %}"
+                                                                                    itemprop="url">
+                                                                                    {{items.name}}
+                                                                                </a></h2>
+
+
+
+                                                                            <div class="product-price-and-shipping">
+
+                                                                                <span class="sr-only">Price</span>
+                                                                                <span itemprop="price" class="price">ETB
+                                                                                    {{items.selling_price}}</span>
+
+
+
+
+
+
+                                                                                <div class="addtocart-button ">
+
+                                                                                    {% csrf_token %}
+                                                    <input type="hidden" value=" {{items.pk}}" class="prod_id" >
+                                                    <input type="hidden" min="1" class="qty-input"  max="1" value="1" type="number">
+                                                       
+                                                        <button class="btn btn-primary addtocartbtn">Add to cart</button>
+
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+
+                                        </li>
+                                        {% endfor %}
+
+
+                                    </ul>
+                                </div>
+                                <div class="clearfix">
+                                    <a href="{% url 'shop' %}"
+                                        class="btn btn-primary allproducts">All Newproducts</a>
+                                </div>
+                            </section>
+
+
+                        </div>
+
+
+
+
+                        <div id="content-wrapper" class="left-column col-xs-12 col-sm-8 col-md-9">
+
+
+
+                            <section id="main">
+
+
+
+                                <header class="page-header">
+                                    <h1>
+                                        Your account
+                                    </h1>
+                                </header>
+
+
+
+
+                                <section id="content" class="page-content">
+
+
+
+                                    
+
+
+
+                                    <div class="row">
+                                        <div class="links">
+
+                                            <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="identity-link"
+                                                href="{% url 'editaccount' %}">
+                                                <span class="link-item">
+                                                    <i class="material-icons"></i>
+                                                    Information
+                                                </span>
+                                            </a>
+
+                                            
+
+                                            <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="history-link"
+                                                href="{% url 'vieworder' %}">
+                                                <span class="link-item">
+                                                    <i class="material-icons"></i>
+                                                    Order history and details
+                                                </span>
+                                            </a>
+
+                                            
+                                            
+                                        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="order-slips-link"
+                                            href="{% url 'deleteaccount' %}">
+                                            <span class="link-item">
+                                                <i class="material-icons"></i>
+                                               Delete Account
+                                            </span>
+                                        </a>
+
+
+
+                                            
+
+                                           
+
+
+
+                                        </div>
+                                    </div>
+
+                                </section>
+
+
+
+                                <footer class="page-footer">
+
+
+                                    <div class="text-sm-center">
+                                        <a
+                                            href="{% url 'logout' %}">
+                                            Sign out
+                                        </a>
+                                    </div>
+
+
+                                </footer>
+
+
+                            </section>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {% include "store/inc/footer.html" %}
+
+    </main>
+
+    {% include "store/inc/scripts.html" %}
+
+
+
+
+
+
+    
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>
+
+
+
+
